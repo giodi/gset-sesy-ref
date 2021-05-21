@@ -45,7 +45,7 @@
             display: block;
         }
 
-        body{
+        body {
             background: #bbb;
             line-height: 1;
             font-size: 1.6rem;
@@ -177,10 +177,10 @@
         }
 
         code {
-            background: #000;
+            background: #111;
             color: #00ff3b;
             font-weight: 400;
-            border: 1px solid #000;
+            border: 1px solid #111;
             padding: 1rem;
             width: 100%;
             display: block;
@@ -190,7 +190,27 @@
             border-radius: 3px;
         }
 
-        code a{
+        code table,
+        code table td{
+            text-align: center !important;
+            border: 1px solid #00ff3b;
+        }
+        code table{
+            margin-top: 0;
+        }
+        code table td{
+            padding: 10px !important;
+        }
+
+        code{
+
+        }
+
+        em {
+            font-family: monospace;
+        }
+
+        code a {
             color: #00ff3b;
         }
 
@@ -198,7 +218,7 @@
             margin-top: 2rem;
         }
 
-        svg{
+        svg {
             background: #fff;
             padding: 20px;
             margin-top: 16px;
@@ -218,11 +238,11 @@
             margin-top: 0;
         }
 
-        p{
+        p {
             max-width: 80rem;
         }
 
-        figcaption{
+        figcaption {
             font-size: 1.4rem;
             padding: 8px 0 16px;
             font-style: italic;
@@ -232,43 +252,47 @@
 </head>
 <body>
 <details>
+    <summary>RDF Schema</summary>
+    <p></p>
+</details>
+<details>
     <summary>Terse RDF Triple Language (Turtle)</summary>
     <p>Turtle ist eine Syntax um RDF Graphen textlich abzubilden. Ein RDF Graph besteht aus den zwei Knoten über eine
         gerichtete Kante verbunden (Subjekt, Prädikat, Objekt).</p>
     <figure>
-    <svg width="500" height="100%" viewBox="0 0 399 86" version="1.1" xmlns="http://www.w3.org/2000/svg"
-         xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
-         style="fill-rule:evenodd;clip-rule:evenodd;stroke-miterlimit:10;">
+        <svg width="500" height="100%" viewBox="0 0 399 86" version="1.1" xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+             style="fill-rule:evenodd;clip-rule:evenodd;stroke-miterlimit:10;">
         <g transform="matrix(1,0,0,1,362,70.7965)">
             <text x="-33.359px" y="0px" style="font-family:'Verdana', sans-serif;font-size:20px;">Objekt</text>
         </g>
-        <g transform="matrix(1,0,0,1,42,70.7965)">
+            <g transform="matrix(1,0,0,1,42,70.7965)">
             <text x="-38.652px" y="0px" style="font-family:'Verdana', sans-serif;font-size:20px;">Subjekt</text>
         </g>
-        <g transform="matrix(1,0,0,1,202,27.0495)">
+            <g transform="matrix(1,0,0,1,202,27.0495)">
             <text x="-41.143px" y="0px" style="font-family:'Verdana', sans-serif;font-size:20px;">Prädikat</text>
         </g>
-        <path d="M338.03,33.5L328.03,38.5L330.53,33.5L328.03,28.5L338.03,33.5Z"
-              style="fill-rule:nonzero;stroke:black;stroke-width:4px;"/>
-        <path d="M62.5,33.5L330.53,33.5" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:4px;"/>
-        <circle cx="362.5" cy="33.5" r="20"/>
-        <circle cx="42.5" cy="33.5" r="20"/>
+            <path d="M338.03,33.5L328.03,38.5L330.53,33.5L328.03,28.5L338.03,33.5Z"
+                  style="fill-rule:nonzero;stroke:black;stroke-width:4px;"/>
+            <path d="M62.5,33.5L330.53,33.5" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:4px;"/>
+            <circle cx="362.5" cy="33.5" r="20"/>
+            <circle cx="42.5" cy="33.5" r="20"/>
     </svg>
         <figcaption>Visuelle Darstellung eines RDF Graphen.</figcaption>
     </figure>
     <h2>Beispiel eines Turtle Dokuments</h2>
     <code>
-        <a href="#prefix">@prefix ex: &lt;http://example.org/&gt;</a> .<br />
-        @prefix dc: &lt;http://purl.org/dc/elements/1.1/&gt; .<br />
-        <br />
-        <a href="#simple">ex:Bibliothek ex:bibliotheksTyp ex:HochschuleBibliothek .</a><br />
-        dc:creator rdf:label <a href="#literale">"Ferdinand de Saussure"@de</a> <a href="#list-obj">;</a><br />
+        <a href="#prefix">@prefix ex: &lt;http://example.org/&gt;</a> .<br/>
+        @prefix dc: &lt;http://purl.org/dc/elements/1.1/&gt; .<br/>
+        <br/>
+        <a href="#simple">ex:Bibliothek ex:bibliotheksTyp ex:HochschuleBibliothek .</a><br/>
+        dc:creator rdf:label <a href="#literale">"Ferdinand de Saussure"@de</a> <a href="#list-obj">;</a><br/>
         &nbsp;&nbsp;&nbsp;:ex:born <a href="#literale">"2020-02-02"^^xsd:date</a> .
     </code>
     <details id="simple">
         <summary>Simples Tripel (x y z .)</summary>
         <p>Ein simple Aussage besteht aus der Abfolge von Subjekt, Prädikat, Objekt jeweils durch ein Leerzeichen
-            getrennt und abgeschlossen mit einem <strong>«.»</strong>.</p>
+            getrennt und abgeschlossen mit einem <strong>«<em>.</em>»</strong>.</p>
         <code>
             &lt;http://example.org/#FerdinandDeSaussure&gt; &lt;http://example.org/#hatBeruf&gt; &lt;http://example.org/#Sprachwissenschaftler&gt;
             .
@@ -277,7 +301,7 @@
     <details id="list-predicates">
         <summary>Liste Prädikaten (;)</summary>
         <p>Oftmals wird das gleiche Subjekt mehrmals wiederholt und mit verschiedenen Prädikaten versehen. Für die
-            Kurzschreibweise kann ein «;» verwendet werden. Dadurch wird das Subjekt wiederholt.</p>
+            Kurzschreibweise kann ein «<em>;</em>» verwendet werden. Dadurch wird das Subjekt wiederholt.</p>
         <p>Folgende Beispiele sind in den Aussagen identisch:</p>
         <code>
             &lt;http://example.org/#FerdinandDeSaussure&gt; &lt;http://example.org/#hatBeruf&gt; &lt;http://example.org/#Sprachwissenschaftler&gt;
@@ -293,7 +317,7 @@
     <details id="list-obj">
         <summary>Liste Objekte (,)</summary>
         <p>Oftmals wird das gleiche Objekt mehrmals mit dem gleichen Subjekt und Prädikate wiederholt. Für die
-            Kurzschreibweise kann ein «,» verwendet werden. Dadurch werden Subjekt und Prädikat wiederholt.</p>
+            Kurzschreibweise kann ein «<em>,</em>» verwendet werden. Dadurch werden Subjekt und Prädikat wiederholt.</p>
         <p>Folgende Beispiele sind in den Aussagen identisch:</p>
         <code>
             &lt;http://example.org/#FerdinandDeSaussure&gt; &lt;http://example.org/#name&gt; "Ferdinand de Saussuere",
@@ -307,22 +331,25 @@
     </details>
     <details>
         <summary>IRI (Internationalized Resource Identifier)</summary>
-        <p>Eine IRI kann absolut, relativ oder mit einem präfix geschrieben werden. Absolute und relative IRIs sind in «&lt;» und «&gt;» eingeschlossen (z.B. &lt;http://example.org/#name&gt; oder &lt;#name&gt;). </p>
+        <p>Eine IRI kann absolut, relativ oder mit einem präfix geschrieben werden. Absolute und relative IRIs sind in «<em>&lt;</em>»
+            und «<em>&gt;</em>» eingeschlossen (z.B. &lt;http://example.org/#name&gt; oder &lt;#name&gt;). </p>
         <details id="prefix">
             <summary>Präfix (@prefix)</summary>
-            <p>Initialisiert wird ein Präfix mittels «@prefix». Das «:» verbindet das Präfix Label und den lokalen Teil.</p>
+            <p>Initialisiert wird ein Präfix mittels «<em>@prefix</em>». Das «<em>:</em>» verbindet das Präfix Label und
+                den lokalen Teil.</p>
             <p>Folgende Beispiele sind in den Aussagen identisch:</p>
             <code>
-                @prefix ex: &lt;http://www.example.org/#&gt; .<br />
+                @prefix ex: &lt;http://www.example.org/#&gt; .<br/>
                 ex:FerdinandDeSaussure ex:name "Ferdinand de Saussuere" .
             </code>
             <code>
-                &lt;http://www.example.org/#FerdinandDeSaussure&gt; &lt;http://www.example.org/#name&gt; "Ferdinand de Saussuere" .
+                &lt;http://www.example.org/#FerdinandDeSaussure&gt; &lt;http://www.example.org/#name&gt; "Ferdinand de
+                Saussuere" .
             </code>
         </details>
         <details id="a-type">
             <summary>http://www.w3.org/1999/02/22-rdf-syntax-ns#type (a)</summary>
-            <p>Wird an der Prädikatsposition «a» geschrieben steht dies für den IRI
+            <p>Wird an der Prädikatsposition «<em>a</em>» geschrieben steht dies für den IRI
                 http://www.w3.org/1999/02/22-rdf-syntax-ns#type.</p>
             <p>Folgende Beispiele sind in den Aussagen identisch:</p>
             <code>
@@ -338,23 +365,26 @@
         </details>
         <details id="base">
             <summary>Basis IRI (@base)</summary>
-            <p>Mittels «@base» wird die Basis IRI festgelegt welche sich darauf auswirkt wie lokale IRIs aufgelöst werden.</p>
+            <p>Mittels «<em>@base</em>» wird die Basis IRI festgelegt welche sich darauf auswirkt wie lokale IRIs
+                aufgelöst werden.</p>
             <code>
-                @base &lt;http://my.example.org/&gt; .<br />
-                &lt;FerdinandDeSaussure&gt; &lt;name&gt; "Ferdinand de Saussuere" .<br />
-                # Wird aufgelöst zu &lt;http://my.example.org/FerdinandDeSaussure&gt; &lt;http://my.example.org/name&gt; "Ferdinand de Saussuere" .
+                @base &lt;http://my.example.org/&gt; .<br/>
+                &lt;FerdinandDeSaussure&gt; &lt;name&gt; "Ferdinand de Saussuere" .<br/>
+                # Wird aufgelöst zu &lt;http://my.example.org/FerdinandDeSaussure&gt; &lt;http://my.example.org/name&gt;
+                "Ferdinand de Saussuere" .
             </code>
         </details>
     </details>
     <details id="literale">
         <summary>Literale</summary>
         <p>Literale enthalten Werte wie Zeichenketten, Zahlen oder Daten.</p>
-        <p>Literale werden mit Anführungszeichen gekennzeichnet. Zusätzlich kann dem Literal ein Sprachen-Tag mittels «@» oder ein Datentyp IRI mittels «^^» erweitert werden</p>
+        <p>Literale werden mit Anführungszeichen gekennzeichnet. Zusätzlich kann dem Literal ein Sprachen-Tag mittels
+            «<em>@</em>» oder ein Datentyp IRI mittels «<em>^^</em>» erweitert werden</p>
         <code>
-            @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .<br />
-            @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .<br />
-            <br />
-            :FerdinandDeSaussure rdfs:label "Ferdinand de Saussure"^^xsd:string .<br />
+            @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .<br/>
+            @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .<br/>
+            <br/>
+            :FerdinandDeSaussure rdfs:label "Ferdinand de Saussure"^^xsd:string .<br/>
             :FerdinandDeSaussure :name "Ferdinand de Saussuere"@de, "弗迪南·德·索緒爾"@zh .
         </code>
     </details>
@@ -363,53 +393,56 @@
         <details id="blank-node-label">
             <summary>Leerer Knoten mit Label (_)</summary>
             <p>
-                Ein leerer Knoten wird mittels «_:» initialisert gefolgt von einer Zeichenfolge aus Buchstaben und Zahlen.
+                Ein leerer Knoten wird mittels «<em>_:</em>» initialisert gefolgt von einer Zeichenfolge aus Buchstaben
+                und Zahlen.
             </p>
             <code>
-                @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .<br />
-                <br />
-                _:deSaussure foaf:knows _:faesch .<br />
+                @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .<br/>
+                <br/>
+                _:deSaussure foaf:knows _:faesch .<br/>
                 _:faesch foaf:knows _:deSaussure .
             </code>
         </details>
         <details id="blank-node-no-label">
             <summary>Leerer Knoten ohne Label ([])</summary>
-            <p>Ein anonymer Knoten wird mittels «[]» initialisiert.</p>
+            <p>Ein anonymer Knoten wird mittels «<em>[]</em>» initialisiert.</p>
             <code>
-                @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .<br />
-                <br />
-                [] foaf:knows [ foaf:name "Ferdinand de Saussure" ] .<br />
+                @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .<br/>
+                <br/>
+                [] foaf:knows [ foaf:name "Ferdinand de Saussure" ] .<br/>
             </code>
             <p>Leere anonyme Knoten können auch verschachtelt werden.</p>
             <code>
-                @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+                @prefix foaf:
+                <http:
+                //xmlns.com/foaf/0.1/> .
 
-                [ foaf:name "Ferdinand de Saussure" ] foaf:knows [<br />
-                &nbsp;&nbsp;&nbsp;foaf:name "Marie Faesch" ;<br />
-                &nbsp;&nbsp;&nbsp;foaf:knows [<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foaf:name "Jules Faesch" ] ;<br />
+                [ foaf:name "Ferdinand de Saussure" ] foaf:knows [<br/>
+                &nbsp;&nbsp;&nbsp;foaf:name "Marie Faesch" ;<br/>
+                &nbsp;&nbsp;&nbsp;foaf:knows [<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foaf:name "Jules Faesch" ] ;<br/>
                 &nbsp;&nbsp;&nbsp;foaf:mbox &lt;marie.faesch@example.com&gt; ] .
             </code>
             <p>Das obere Beispiel kann auch so geschrieben werden.</p>
             <code>
-                _:a &lt;http://xmlns.com/foaf/0.1/name&gt; "Ferdinand de Saussure" .<br />
-                _:a &lt;http://xmlns.com/foaf/0.1/knows&gt; _:b .<br />
-                _:b &lt;http://xmlns.com/foaf/0.1/name&gt; "Marie Faesch" .<br />
-                _:b &lt;http://xmlns.com/foaf/0.1/knows&gt; _:c .<br />
-                _:c &lt;http://xmlns.com/foaf/0.1/name&gt; "Jules Faesch" .<br />
+                _:a &lt;http://xmlns.com/foaf/0.1/name&gt; "Ferdinand de Saussure" .<br/>
+                _:a &lt;http://xmlns.com/foaf/0.1/knows&gt; _:b .<br/>
+                _:b &lt;http://xmlns.com/foaf/0.1/name&gt; "Marie Faesch" .<br/>
+                _:b &lt;http://xmlns.com/foaf/0.1/knows&gt; _:c .<br/>
+                _:c &lt;http://xmlns.com/foaf/0.1/name&gt; "Jules Faesch" .<br/>
                 _:b &lt;http://xmlns.com/foaf/0.1/mbox&gt; &lt;marie.faesch@example.com&gt; .
             </code>
         </details>
     </details>
     <details id="collections">
         <summary>Collections</summary>
-        <p>Eine Collections wird mittels «()» initialisiert.</p>
+        <p>Eine Collections wird mittels «<em>()</em>» initialisiert.</p>
         <code>
-            @prefix : &lt;http://example.org/foo&gt; .<br />
-            # Das Objekt dieses Tripels ist das RDF collection blank node.<br />
-            :subject :predicate ( :a :b :c ) .<br />
-            <br />
-            # Eine leere Collection (rdf:nil)<br />
+            @prefix : &lt;http://example.org/foo&gt; .<br/>
+            # Das Objekt dieses Tripels ist das RDF collection blank node.<br/>
+            :subject :predicate ( :a :b :c ) .<br/>
+            <br/>
+            # Eine leere Collection (rdf:nil)<br/>
             :subject :predicate2 () .
         </code>
     </details>
@@ -417,22 +450,112 @@
         <summary>Tools & Weiterführendes</summary>
         <ul>
             <li>
-                Referenz Turtle: <a href="https://www.w3.org/TR/rdf11-concepts/">https://www.w3.org/TR/rdf11-concepts/</a>
+                Referenz Turtle: <a
+                    href="https://www.w3.org/TR/rdf11-concepts/">https://www.w3.org/TR/rdf11-concepts/</a>
             </li>
             <li>
                 Turtle Syntaxprüfung: <a href="http://ttl.summerofcode.be/">http://ttl.summerofcode.be/</a>
             </li>
             <li>
-                Visualisierung: <a href="https://www.ldf.fi/service/rdf-grapher">https://www.ldf.fi/service/rdf-grapher</a>
+                Visualisierung: <a
+                    href="https://www.ldf.fi/service/rdf-grapher">https://www.ldf.fi/service/rdf-grapher</a>
             </li>
         </ul>
     </details>
+</details>
+
+<details>
+    <summary>
+        SPARQL
+    </summary>
+    <p>SPARQL ist eine Abfragesprache für RDF Graphen mit den Möglichkeiten etwa Konjunktionen oder Disjunktionen
+        abzufragen.</p>
+    <details>
+        <summary>Variable (? oder $)</summary>
+        <p>Eine Variable wird mittels «<em>?</em>» oder «<em>$</em>» initialisiert. Eingebürgert hat sich die Verwendung
+            von <em>?</em>. Variabeln sind als Subjekt, Prädikat und Objekt zulässig.</p>
+        <code>
+            SELECT ?var WHERE { &hellip; }
+        </code>
+    </details>
+    <details>
+        <summary>Einfaches Query (SELECT &hellip; WHERE)</summary>
+        <p>Mit der Klausel <em>SELECT</em> werden die Variabeln angegeben, welche im ausgeführten Query angezeigt werden
+            sollen.</p>
+        <p>Mit der Klausel <em>WHERE</em> wird das Anfragemuster definiert. Das Anfragemuster wird in der Turtle Syntax
+            geschrieben.</p>
+        <p>In diesem Beispiel wird angegeben, dass die Variable <em>?name</em> im Resultat der Abfrage angezeigt werden
+            soll.</p>
+        <h2>Beispiel 1</h2>
+        <p>RDF Daten</p>
+        <code>
+            @prefix ex: &lt;http://example.org/&gt; .<br/>
+            @prefix rdfs: &lt;https://www.w3.org/TR/rdf-schema/#&gt;<br/>
+            ex:InformationScientist rdfs:label "Rainer Kuhlen" .
+        </code>
+        <p>SPARQL Anfrage</p>
+        <code>
+            SELECT ?name<br/>
+            WHERE<br/>
+            {<br/>
+            ex:InformationScientist rdfs:label ?name .<br/>
+            }<br/>
+        </code>
+        <p>Resultat</p>
+        <code>
+            <table>
+                <tr>
+                    <td>name</td>
+                </tr>
+                <tr>
+                    <td>"Rainer Kuhlen"</td>
+                </tr>
+            </table>
+        </code>
+        <h2>Beispiel 2</h2>
+        <p>RDF Daten</p>
+        <code>
+            @prefix ex: &lt;http://example.org/&gt; .<br/>
+            @prefix rdfs: &lt;https://www.w3.org/TR/rdf-schema/#&gt;<br/>
+            [] rdfs:label "Rainer Kuhlen" ;<br/>
+            &nbsp;&nbsp;&nbsp; a ex:InformationScientist .<br/>
+            [] rdfs:label "Wolfgang Semar" ;<br/>
+            &nbsp;&nbsp;&nbsp; a ex:InformationScientist .
+        </code>
+        <p>SPARQL Anfrage</p>
+        <code>
+            SELECT ?name ?type<br/>
+            WHERE<br/>
+            {<br/>
+            ?x rdfs:label ?name .<br/>
+            ?x a ?type<br />
+            }<br/>
+        </code>
+        <p>Resultat</p>
+        <code>
+            <table>
+                <tr>
+                    <td>name</td>
+                    <td>type</td>
+                </tr>
+                <tr>
+                    <td>"Rainer Kuhlen"</td>
+                    <td>&lt;http://example.org/InformationScientist&gt;</td>
+                </tr>
+                <tr>
+                    <td>"Wolfgang Semar"</td>
+                    <td>&lt;http://example.org/InformationScientist&gt;</td>
+                </tr>
+            </table>
+        </code>
+    </details>
+
 </details>
 <details>
     <summary>OWL (Web Onotolgy Language)</summary>
 
     <details>
-        <summary>Klassen</summary>
+        <summary>Klassen (owl:Class)</summary>
         <p>
             Klassen in OWL sind vergleichbar mit Klassen in RDFS.
         </p>
@@ -441,7 +564,7 @@
         <h2>Beispiel</h2>
         <code>ex:Pinguin a owl:Class .</code>
         <details>
-            <summary>Subklassen</summary>
+            <summary>Subklassen (rdfs:SubClassOf)</summary>
             <p>Werden wie in RDFS definiert.</p>
             <h2>Definition</h2>
             <code>rdfs:SubClassOf</code>
@@ -470,7 +593,9 @@
                     fhgr:Freshman rdfs:subClassOf fhgr:Student .<br/>
                     fhgr:Mitarbeiter owl:disjointWith fhgr:Student .
                 </code>
-                → Folgerung Dozent und Freshman sind ebenfalls disjunkt.
+                <p>
+                    → Folgerung Dozent und Freshman sind ebenfalls disjunkt.
+                </p>
             </details>
             <details>
                 <summary>Äquivalenz (dieselben Elemente beinhalten)</summary>
@@ -483,7 +608,7 @@
                     fhgr:Buch rdfs:subClassOf fhgr:Publikation .<br/>
                     fhgr:Publikation owl:equivalentClass fhgr:Veröffentlichung .
                 </code>
-                → Folgerung fhgr:Buch ist auch Unterklasse von fhgr:Veröffentlichung.
+                <p>→ Folgerung fhgr:Buch ist auch Unterklasse von fhgr:Veröffentlichung.</p>
             </details>
         </details>
         <details>
@@ -805,25 +930,16 @@
         </details>
     </details>
 </details>
-<details>
-    <summary>
-        SPARQL
-    </summary>
-    <p>SPARQL ist eine Abfragesprache für RDF Graphen mit den Möglichkeiten etwa Konjunktionen oder Disjunktionen abzufragen.</p>
-    <details>
-        <summary>Einfaches Query</summary>
-    </details>
-</details>
 <script type="text/javascript">
-    (()=>{
+    (() => {
         const skipLinks = document.querySelectorAll('a');
         let i = skipLinks.length;
-        while(i--){
-            skipLinks[i].addEventListener('click',(e) => {
+        while (i--) {
+            skipLinks[i].addEventListener('click', (e) => {
 
                 const hl = e.target.hash;
 
-                if(hl){
+                if (hl) {
                     let elem = document.querySelector(hl);
                     elem.setAttribute('open', 'true');
                     let pN = elem.parentNode;
