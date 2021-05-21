@@ -11,7 +11,7 @@
         }
 
         [id] {
-            scroll-margin-top: 6rem;
+            scroll-margin-top: 2rem;
         }
 
         html, body, div, span, applet, object, iframe,
@@ -201,6 +201,10 @@
             font-family: monospace;
         }
 
+        code a{
+            color: #00ff3b;
+        }
+
         code + details {
             margin-top: 2rem;
         }
@@ -276,7 +280,16 @@
     </svg>
         <figcaption>Visuelle Darstellung eines RDF Graphen.</figcaption>
     </figure>
-    <details>
+    <h2>Beispiel eines Turtle Dokuments (mit Verweisen)</h2>
+    <code>
+        <a href="#prefix">@prefix ex: &lt;http://example.org/&gt;</a> .<br />
+        @prefix dc: &lt;http://purl.org/dc/elements/1.1/&gt; .<br />
+        <br />
+        <a href="#simple">ex:Bibliothek ex:bibliotheksTyp ex:HochschuleBibliothek .</a><br />
+        dc:creator rdf:label <a href="#literale">"Ferdinand de Saussure"@de</a> <a href="#list-obj">;</a><br />
+        &nbsp;&nbsp;&nbsp;:ex:born <a href="#literale">"2020-02-02"^^xsd:date</a> .
+    </code>
+    <details id="simple">
         <summary>Simples Tripel (x y z .)</summary>
         <p>Ein simple Aussage besteht aus der Abfolge von Subjekt, Prädikat, Objekt jeweils durch ein Leerzeichen
             getrennt und abgeschlossen mit einem <strong>«.»</strong>.</p>
@@ -285,7 +298,7 @@
             .
         </code>
     </details>
-    <details>
+    <details id="list-predicates">
         <summary>Liste Prädikaten (;)</summary>
         <p>Oftmals wird das gleiche Subjekt mehrmals wiederholt und mit verschiedenen Prädikaten versehen. Für die
             Kurzschreibweise kann ein «;» verwendet werden. Dadurch wird das Subjekt wiederholt.</p>
@@ -301,7 +314,7 @@
             &lt;http://example.org/#FerdinandDeSaussure&gt; &lt;http://example.org/#geboren&gt; "1857-11-26" .
         </code>
     </details>
-    <details>
+    <details id="list-obj">
         <summary>Liste Objekte (,)</summary>
         <p>Oftmals wird das gleiche Objekt mehrmals mit dem gleichen Subjekt und Prädikate wiederholt. Für die
             Kurzschreibweise kann ein «,» verwendet werden. Dadurch werden Subjekt und Prädikat wiederholt.</p>
@@ -319,7 +332,7 @@
     <details>
         <summary>IRI (Internationalized Resource Identifier)</summary>
         <p>Eine IRI kann absolut, relativ oder mit einem präfix geschrieben werden. Absolute und relative IRIs sind in «&lt;» und «&gt;» eingeschlossen (z.B. &lt;http://example.org/#name&gt; oder &lt;#name&gt;). </p>
-        <details>
+        <details id="prefix">
             <summary>Präfix (@prefix)</summary>
             <p>Initialisiert wird ein Präfix mittels «@prefix». Das «:» verbindet das Präfix Label und den lokalen Teil.</p>
             <p>Folgende Beispiele sind in den Aussagen identisch:</p>
@@ -331,7 +344,7 @@
                 &lt;http://www.example.org/#FerdinandDeSaussure&gt; &lt;http://www.example.org/#name&gt; "Ferdinand de Saussuere" .
             </code>
         </details>
-        <details>
+        <details id="a-type">
             <summary>http://www.w3.org/1999/02/22-rdf-syntax-ns#type (a)</summary>
             <p>Wird an der Prädikatsposition «a» geschrieben steht dies für den IRI
                 http://www.w3.org/1999/02/22-rdf-syntax-ns#type.</p>
@@ -347,7 +360,7 @@
                 :FerdinandDeSaussure rdf:type :Person .
             </code>
         </details>
-        <details>
+        <details id="base">
             <summary>Basis IRI (@base)</summary>
             <p>Mittels «@base» wird die Basis IRI festgelegt welche sich darauf auswirkt wie lokale IRIs aufgelöst werden.</p>
             <code>
@@ -357,7 +370,7 @@
             </code>
         </details>
     </details>
-    <details>
+    <details id="literale">
         <summary>Literale</summary>
         <p>Literale enthalten Werte wie Zeichenketten, Zahlen oder Daten.</p>
         <p>Literale werden mit Anführungszeichen gekennzeichnet. Zusätzlich kann dem Literal ein Sprachen-Tag mittels «@» oder ein Datentyp IRI mittels «^^» erweitert werden</p>
@@ -371,12 +384,58 @@
     </details>
     <details>
         <summary>Leere Knoten</summary>
-        <details>
+        <details id="blank-node-label">
             <summary>Leerer Knoten mit Label (_)</summary>
+            <p>
+                Ein leerer Knoten wird mittels «_:» initialisert gefolgt von einer Zeichenfolge aus Buchstaben und Zahlen.
+            </p>
+            <code>
+                @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .<br />
+                <br />
+                _:deSaussure foaf:knows _:faesch .<br />
+                _:faesch foaf:knows _:deSaussure .
+            </code>
         </details>
-        <details>
+        <details id="blank-node-no-label">
             <summary>Leerer Knoten ohne Label ([])</summary>
+            <p>Ein anonymer Knoten wird mittels «[]» initialisiert.</p>
+            <code>
+                @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .<br />
+                <br />
+                [] foaf:knows [ foaf:name "Ferdinand de Saussure" ] .<br />
+            </code>
+            <p>Leere anonyme Knoten können auch verschachtelt werden.</p>
+            <code>
+                @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+                [ foaf:name "Ferdinand de Saussure" ] foaf:knows [<br />
+                &nbsp;&nbsp;&nbsp;foaf:name "Marie Faesch" ;<br />
+                &nbsp;&nbsp;&nbsp;foaf:knows [<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foaf:name "Jules Faesch" ] ;<br />
+                &nbsp;&nbsp;&nbsp;foaf:mbox &lt;marie.faesch@example.com&gt; ] .
+            </code>
+            <p>Das obere Beispiel kann auch so geschrieben werden.</p>
+            <code>
+                _:a &lt;http://xmlns.com/foaf/0.1/name&gt; "Ferdinand de Saussure" .<br />
+                _:a &lt;http://xmlns.com/foaf/0.1/knows&gt; _:b .<br />
+                _:b &lt;http://xmlns.com/foaf/0.1/name&gt; "Marie Faesch" .<br />
+                _:b &lt;http://xmlns.com/foaf/0.1/knows&gt; _:c .<br />
+                _:c &lt;http://xmlns.com/foaf/0.1/name&gt; "Jules Faesch" .<br />
+                _:b &lt;http://xmlns.com/foaf/0.1/mbox&gt; &lt;marie.faesch@example.com&gt; .
+            </code>
         </details>
+    </details>
+    <details id="collections">
+        <summary>Collections</summary>
+        <p>Eine Collections wird mittels «()» initialisiert.</p>
+        <code>
+            @prefix : &lt;http://example.org/foo&gt; .<br />
+            # Das Objekt dieses Tripels ist das RDF collection blank node.<br />
+            :subject :predicate ( :a :b :c ) .<br />
+            <br />
+            # Eine leere Collection (rdf:nil)<br />
+            :subject :predicate2 () .
+        </code>
     </details>
     <details>
         <summary>Tools & Weiterführendes</summary>
@@ -770,5 +829,47 @@
         </details>
     </details>
 </details>
+<details>
+    <summary>
+        SPARQL
+    </summary>
+    <p>SPARQL ist eine Abfragesprache für RDF Graphen mit den Möglichkeiten etwa Konjunktionen oder Disjunktionen abzufragen.</p>
+    <details>
+        <summary>Einfaches Query</summary>
+    </details>
+</details>
+<script type="text/javascript">
+    (()=>{
+        const skipLinks = document.querySelectorAll('a');
+        let i = skipLinks.length;
+        while(i--){
+            skipLinks[i].addEventListener('click',(e) => {
+
+                const hl = e.target.hash;
+
+                if(hl){
+                    let elem = document.querySelector(hl);
+                    elem.setAttribute('open', 'true');
+                    let pN = elem.parentNode;
+                    while (pN.nodeName == 'DETAILS') {
+                        pN.setAttribute('open', 'true');
+                        pN = pN.parentNode;
+                    }
+                }
+
+            })
+        }
+    })();
+</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
