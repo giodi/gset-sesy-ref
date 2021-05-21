@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>SESY Cheatsheet</title>
-	<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SESY & GSET Kurzreferenz</title>
+    <style>
 
         :root {
             font-size: 62.5%;
@@ -188,20 +188,20 @@
             margin-top: 1rem;
         }
 
-        code{
-        	background: #000;
-        	color: #00ff3b;
-        	font-weight: 600;
-        	border: 1px solid #000;
-        	padding: 1rem;
-        	width: 100%;
-        	display: block;
-        	margin-top: 1rem;
-        	line-height: 1.5;
+        code {
+            background: #000;
+            color: #00ff3b;
+            font-weight: 600;
+            border: 1px solid #000;
+            padding: 1rem;
+            width: 100%;
+            display: block;
+            margin-top: 1rem;
+            line-height: 1.5;
         }
 
-        code + details{
-        	margin-top: 2rem;
+        code + details {
+            margin-top: 2rem;
         }
 
         h2,
@@ -239,361 +239,521 @@
     </style>
 </head>
 <body>
-	<details>
-		<summary>Klassen</summary>
-		<p>
-			Klassen in OWL sind vergleichbar mit Klassen in RDFS.
-		</p>
-		<h2>Definition</h2>
-		<code>owl:Class</code>
-		<h2>Beispiel</h2>
-		<code>ex:Pinguin a owl:Class .</code>		
-		<details>
-			<summary>Subklassen</summary>
-			<p>Werden wie in RDFS definiert.</p>
-			<h2>Definition</h2>
-			<code>rdfs:SubClassOf</code>
-			<h2>Beispiel</h2>
-			<code>ex:Pinguin rdfs:subClassOf ex:Tier .</code>
-		</details>
-		<details>
-			<summary>Vordefinierte Klassen</summary>
-			<h2>owl:Thing</h2>
-			<p>Oberklasse aller Klassen. Enthält alle Individuen. Jede Klasse C ist Unterklasse von owl:Thing.</p>
-			<code>C rdfs:subClassOf owl:Thing .</code>
-			<h2>owl:Nothing</h2>
-			<p>Subklasse aller Klassen. Enthält keine Individuen. Jede Klasse C ist Oberklasse von owl:Nothing.</p>
-			<code>owl:Nothing rdfs:subClassOf C .</code>
-		</details>
-		<details>
-			<summary>Klassenbeziehungen</summary>
-			<details>
-				<summary>Disjunktion (Keine gemeinsamen Elemente)</summary>
-				<p>Zwei Klassen sind disjunkt, wenn sie keine gemeinsamen Elemente beinhalten (leere Schnittmenge).</p>
-				<h2>Definition</h2>
-				<code>owl:disjointWith</code>
-				<h2>Beispiel</h2>
-				<code>
-					fhgr:Dozent rdfs:subClassOf fhgr:Mitarbeiter .<br />
-					fhgr:Freshman rdfs:subClassOf fhgr:Student .<br />
-					fhgr:Mitarbeiter owl:disjointWith fhgr:Student .
-				</code>
-				→ Folgerung Dozent und Freshman sind ebenfalls disjunkt.
-			</details>
-			<details>
-				<summary>Äquivalenz (dieselben Elemente beinhalten)</summary>
-				<p>Zwei Klassen sind äquivalent, wenn sie dieselben Elemente beinhalten, d.h. Teilmenge der jeweils anderen Klasse sind.
-				<code>owl:disjointWith</code>
-				<h2>Beispiel</h2>
-				<code>
-					fhgr:Buch rdfs:subClassOf fhgr:Publikation .<br />
-					fhgr:Publikation owl:equivalentClass fhgr:Veröffentlichung .
-				</code>
-				→ Folgerung fhgr:Buch ist auch Unterklasse von fhgr:Veröffentlichung.
-			</details>
-		</details>
-		<details>
-			<summary>Logische Konstruktoren</summary>
-			<p>Erzeugung komplexer Klassen aus einfachen Klassen mittels logischer Konstruktoren</p>
-			<details>
-				<summary>Konjunktion (und)</summary>
-				<p>Umfasst alle Objekte zweier Klassen, die gleichzeitig zu beiden Klassen gehören</p>
-				<h2>Definition</h2>
-				<code>owl:intersectionOf</code>
-				<h2>Beispiel</h2>
-				<code>
-					fhgr:DozentDAViS rdf:type owl:Class ;<br />
-					&nbsp;&nbsp;&nbsp;owl:equivalentClass [<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rdf:type owl:Class ;<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:intersectionOf ( fhgr:Dozent fhgr:MitarbeiterDAViS )<br />
-					&nbsp;&nbsp;&nbsp;] .
-				</code>
-				<p>→ Folgerung: jede(r) :DozentDAViS ist :Dozent und :MitarbeiterDAViS <br />→ Folgerung: jede(r) :Dozent und :MitarbeiterDAViS ist auch :DozentDAViS</p>
-			</details>
-			<details>
-				<summary>Disjunktion (oder)</summary>
-				<p>Umfasst alle Objekte mehrerer Klassen, die zu (mindestens) einer der Klassen gehören</p>
-				<h2>Definition</h2>
-				<code>owl:unionOf</code>
-				<h2>Beispiel</h2>
-				<code>
-					fhgr:Mitarbeiter rdf:type owl:Class ;<br />
-					&nbsp;&nbsp;&nbsp;owl:subClassOf [<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rdf:type owl:Class ;<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:unionOf ( fhgr:Dozentin fhgr:Assistentin fhgr:Sekretärin )<br />
-					&nbsp;&nbsp;&nbsp;] .
-				</code>
-				<p>→ Folgerung: jede(r) :Dozentin, :Assistentin und :Sekretärin ist :Mitarbeiter</p>
-			</details>
-			<details>
-				<summary>Komplement (nicht)</summary>
-				<p>Umfasst alle Objekte die nicht zu einer Klasse gehören</p>
-				<h2>Definition</h2>
-				<code>owl:complementOf</code>
-				<h2>Beispiel</h2>
-				<code>
-					fhgr:Dozent rdf:type owl:Class ;
-					&nbsp;&nbsp;&nbsp;owl:subClassOf [
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rdf:type owl:Class ;
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:complementOf fhgr:Student
-					&nbsp;&nbsp;&nbsp;] .
-				</code>
-				<p>→ Folgerung: Kein :Dozent ist :Student</p>
-			</details>
-		</details>
-	</details>
-	<details>
-		<summary>Individuen</summary>
-		<p>Vergleichbar mit Objekten in RDFS. Muss nicht zwingend angegeben werden</p>
-		<h2>Definition</h2>
-		<code>owl:NamedIndividual</code>
-		<h2>Beispiel einer Instanz</h2>
-		<code>ex:Pingu a owl:NamedIndividual , ex:Pinguin .</code>
-		<details>
-			<summary>Gleichheit</summary>
-			<p>Besagt, dass zwei Individuen identisch sind (Eigentlich zwei Bezeichner bezeichnen dasselbe Individum). Behebt Problematik non unique naming assumption.</p>
-			<h2>Definition</h2>
-			<code>owl:sameAs</code>
-			<h2>Beispiel</h2>
-			<code>ch:Graubünden owl:sameAs ch:Grischun .</code>
-		</details>
-		<details>
-			<summary>Ungleichheit</summary>
-			<p>Gegenteil von owl:sameAs.</p>
-			<h2>Definition</h2>
-			<code>owl:differentFrom</code>
-			<h2>Beispiel</h2>
-			<code>ch:Chur owl:differentFrom ch:Bern .</code>
-			<h2>Einfachere Notation für viele Individuen</h2>
-			<p>Verschiedenheit einer Menge von Individuen mithilfe von Listen.</p>
-			<code>owl:AllDifferent / owl:distinctMembers</code>
-			<h2>Beispiel</h2>
-			<code>
-				[] rdf:type owl:AllDifferent ;<br />
-				&nbsp;&nbsp;&nbsp;owl:distinctMembers ( ex:Fisch ex:Säugetier ex:Amphibie ) .
-			</code>
-		</details>
-		<details>
-			<summary>Individuen als Klassen</summary>
-			<p>Definition von Klassen durch Aufzählung der darin enthaltenen Individuen.</p>
-			<h2>Definition</h2>
-			<code>owl:oneOf</code>
-			<h2>Beispiel</h2>
-			<code>
-				fhgr:TeamDAViS owl:equivalentClass [<br />
-				&nbsp;&nbsp;&nbsp;owl:oneOf ( fhgr:Rölke fhgr:Mundani fhgr:Burch ) <br />
-				] .
-			</code>
-			→ Folgerung: fhgr:TeamDAViS besteht aus fhgr:Rölke, fhgr:Mundani und fhgr:Burch
-		</details>
+<details>
+    <summary>Terse RDF Triple Language (Turtle)</summary>
+    <p>Turtle ist eine Syntax um RDF Graphen textlich abzubilden. Ein RDF Graph besteht aus den zwei Knoten über eine
+        gerichtete Kante verbunden (Subjekt, Prädikat, Objekt).</p>
+    <svg width="500" height="100%" viewBox="0 0 399 86" version="1.1" xmlns="http://www.w3.org/2000/svg"
+         xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+         style="fill-rule:evenodd;clip-rule:evenodd;stroke-miterlimit:10;">
+        <g transform="matrix(1,0,0,1,362,70.7965)">
+            <text x="-33.359px" y="0px" style="font-family:'Verdana', sans-serif;font-size:20px;">Objekt</text>
+        </g>
+        <g transform="matrix(1,0,0,1,42,70.7965)">
+            <text x="-38.652px" y="0px" style="font-family:'Verdana', sans-serif;font-size:20px;">Subjekt</text>
+        </g>
+        <g transform="matrix(1,0,0,1,202,27.0495)">
+            <text x="-41.143px" y="0px" style="font-family:'Verdana', sans-serif;font-size:20px;">Prädikat</text>
+        </g>
+        <path d="M338.03,33.5L328.03,38.5L330.53,33.5L328.03,28.5L338.03,33.5Z"
+              style="fill-rule:nonzero;stroke:black;stroke-width:4px;"/>
+        <path d="M62.5,33.5L330.53,33.5" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:4px;"/>
+        <circle cx="362.5" cy="33.5" r="20"/>
+        <circle cx="42.5" cy="33.5" r="20"/>
+    </svg>
+    <details>
+        <summary>Simples Tripel (x y z .)</summary>
+        <p>Ein simple Aussage besteht aus der Abfolge von Subjekt, Prädikat, Objekt jeweils durch ein Leerzeichen
+            getrennt und abgeschlossen mit einem <strong>«.»</strong>.</p>
+        <code>
+            &lt;http://example.org/#FerdinandDeSaussure&gt; &lt;http://example.org/#hatBeruf&gt; &lt;http://example.org/#Sprachwissenschaftler&gt;
+            .
+        </code>
+    </details>
+    <details>
+        <summary>Liste Prädikaten (;)</summary>
+        <p>Oftmals wird das gleiche Subjekt mehrmals wiederholt und mit verschiedenen Prädikaten versehen. Für die
+            Kurzschreibweise kann ein «;» verwendet werden. Dadurch wird das Subjekt wiederholt.</p>
+        <p>Folgende Beispiele sind in den Aussagen identisch:</p>
+        <code>
+            &lt;http://example.org/#FerdinandDeSaussure&gt; &lt;http://example.org/#hatBeruf&gt; &lt;http://example.org/#Sprachwissenschaftler&gt;
+            ;<br/>
+            &lt;http://example.org/#geboren&gt; "1857-11-26" .
+        </code>
+        <code>
+            &lt;http://example.org/#FerdinandDeSaussure&gt; &lt;http://example.org/#hatBeruf&gt; &lt;http://example.org/#Sprachwissenschaftler&gt;
+            .<br/>
+            &lt;http://example.org/#FerdinandDeSaussure&gt; &lt;http://example.org/#geboren&gt; "1857-11-26" .
+        </code>
+    </details>
+    <details>
+        <summary>Liste Objekte (,)</summary>
+        <p>Oftmals wird das gleiche Objekt mehrmals mit dem gleichen Subjekt und Prädikate wiederholt. Für die
+            Kurzschreibweise kann ein «,» verwendet werden. Dadurch werden Subjekt und Prädikat wiederholt.</p>
+        <p>Folgende Beispiele sind in den Aussagen identisch:</p>
+        <code>
+            &lt;http://example.org/#FerdinandDeSaussure&gt; &lt;http://example.org/#name&gt; "Ferdinand de Saussuere",
+            "弗迪南·德·索緒爾" .
+        </code>
+        <code>
+            &lt;http://example.org/#FerdinandDeSaussure&gt; &lt;http://example.org/#name&gt; "Ferdinand de Saussuere"
+            .<br/>
+            &lt;http://example.org/#FerdinandDeSaussure&gt; &lt;http://example.org/#name&gt; "弗迪南·德·索緒爾" .<br/>
+        </code>
+    </details>
+    <details>
+        <summary>IRI (Internationalized Resource Identifier)</summary>
+        <p>Eine IRI kann absolut, relativ oder mit einem präfix geschrieben werden. Absolute und relative IRIs sind in «&lt;» und «&gt;» eingeschlossen (z.B. &lt;http://example.org/#name&gt; oder &lt;#name&gt;). </p>
+        <details>
+            <summary>Präfix (@prefix)</summary>
+            <p>Initialisiert wird ein Präfix mittels «@prefix». Das «:» verbindet das Präfix Label und den lokalen Teil.</p>
+            <p>Folgende Beispiele sind in den Aussagen identisch:</p>
+            <code>
+                @prefix ex: &lt;http://www.example.org/#&gt; .<br />
+                ex:FerdinandDeSaussure ex:name "Ferdinand de Saussuere" .
+            </code>
+            <code>
+                &lt;http://www.example.org/#FerdinandDeSaussure&gt; &lt;http://www.example.org/#name&gt; "Ferdinand de Saussuere" .
+            </code>
+        </details>
+        <details>
+            <summary>http://www.w3.org/1999/02/22-rdf-syntax-ns#type (a)</summary>
+            <p>Wird an der Prädikatsposition «a» geschrieben steht dies für den IRI
+                http://www.w3.org/1999/02/22-rdf-syntax-ns#type.</p>
+            <p>Folgende Beispiele sind in den Aussagen identisch:</p>
+            <code>
+                :FerdinandDeSaussure a :Person .
+            </code>
+            <code>
+                :FerdinandDeSaussure &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; :Person .
+            </code>
+            <code>
+                @prefix rdf:&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .<br/>
+                :FerdinandDeSaussure rdf:type :Person .
+            </code>
+        </details>
+        <details>
+            <summary>Basis IRI (@base)</summary>
+            <p>Mittels «@base» wird die Basis IRI festgelegt welche sich darauf auswirkt wie lokale IRIs aufgelöst werden.</p>
+            <code>
+                @base &lt;http://my.example.org/&gt; .<br />
+                &lt;FerdinandDeSaussure&gt; &lt;name&gt; "Ferdinand de Saussuere" .<br />
+                # Wird aufgelöst zu &lt;http://my.example.org/FerdinandDeSaussure&gt; &lt;http://my.example.org/name&gt; "Ferdinand de Saussuere" .
+            </code>
+        </details>
+    </details>
+    <details>
+        <summary>Literale</summary>
+        <p>Literale enthalten Werte wie Zeichenketten, Zahlen oder Daten.</p>
+        <p>Literale werden mit Anführungszeichen gekennzeichnet. Zusätzlich kann dem Literal ein Sprachen-Tag mittels «@» oder ein Datentyp IRI mittels «^^» erweitert werden</p>
+        <code>
+            @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .<br />
+            @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .<br />
+            <br />
+            :FerdinandDeSaussure rdfs:label "Ferdinand de Saussure"^^xsd:string .<br />
+            :FerdinandDeSaussure :name "Ferdinand de Saussuere"@de, "弗迪南·德·索緒爾"@zh .
+        </code>
+    </details>
+    <details>
+        <summary>Leere Knoten</summary>
+        <details>
+            <summary>Leerer Knoten mit Label (_)</summary>
+        </details>
+        <details>
+            <summary>Leerer Knoten ohne Label ([])</summary>
+        </details>
+    </details>
+    <details>
+        <summary>Tools & Weiterführendes</summary>
+        <ul>
+            <li>
+                Referenz Turtle: <a href="https://www.w3.org/TR/rdf11-concepts/">https://www.w3.org/TR/rdf11-concepts/</a>
+            </li>
+            <li>
+                Turtle Syntaxprüfung: <a href="http://ttl.summerofcode.be/">http://ttl.summerofcode.be/</a>
+            </li>
+            <li>
+                Visualisierung: <a href="https://www.ldf.fi/service/rdf-grapher">https://www.ldf.fi/service/rdf-grapher</a>
+            </li>
+        </ul>
+    </details>
+</details>
+<details>
+    <summary>OWL (Web Onotolgy Language)</summary>
 
-	</details>
-	<details>
-		<summary>Rollen</summary>
-		<p>Sind Properties wie in RDFS, allerdings wird zwischen zwei Arten von Rollen unterschieden. Beides ist Unterklasse von rdf:Property. Beschränkungen werden wie bei RDFS definiert (rdfs:domain, rdfs:range).</p>
-		<details>
-			<summary>Abstrakte Rolle</summary>
-			<p>Verbindet Individuen mit Individuen.</p>
-			<code>owl:ObjectProperty</code>
-			<h3>Beispiel</h3>
-			<code>
-				ex:lehrt rdf:type owl:ObjectProperty ;<br />
-				&nbsp;&nbsp;&nbsp;rdfs:domain fhgr:Person ;<br />
-				&nbsp;&nbsp;&nbsp;rdfs:range fhgr:Vorlesung .<br />
-				fhgr:Mundani fhgr:lehrt fhgr:SESY .
-			</code>	
-		</details>
-		<details>
-		<summary>Konkrete Rolle</summary>
-		<p>Verbindet Individuen mit Datenwerten (Elementen von Datentypen).</p>
-		<code>owl:DatatypeProperty</code>
-		<h3>Beispiel</h3>
-		<code>
-			fhgr:hatBüro rdf:type owl:DatatypeProperty ;<br />
-			&nbsp;&nbsp;&nbsp;rdfs:domain fhgr:Person ;<br />
-			&nbsp;&nbsp;&nbsp;rdfs:range xsd:string .<br />
-			fhgr:Mundani fhgr:hatBüro "B4.05" .
-		</code>
-		</details>
-		<details>
-			<summary>Gleichheit</summary>
-			<p>besagt, dass zwei Rollen identisch sind (d.h. zwei Bezeichner bezeichnen dieselbe Rolle).</p>
-			<h2>Definition</h2>
-			<code>owl:equivalentProperty</code>
-			<h2>Beispiel</h2>
-			<code>fhgr:lehrt owl:equivalentProperty ch:unterrichtet .</code>
-		</details>
-		<details>
-			<summary>Ungleichheit</summary>
-			<p>Gegenteil von owl:sameAs.</p>
-			<h2>Definition</h2>
-			<code>owl:differentFrom</code>
-			<h2>Beispiel</h2>
-			<code>ch:Chur owl:differentFrom ch:Bern .</code>
-		</details>
-		<details>
-			<summary>Symmetrische Rolle</summary>
-			<p>Nur abstrakte Rollen dürfen symmetrisch, inverse und transitiv sein</p>
-			<h2>Definition</h2>
-			<code>owl:symmetricProperty</code>
-			<h2>Beispiel</h2>
-			<code>
-				fhgr:teiltBüroMit rdf:type owl:symmetricProperty .<br />
-				fhgr:Mundani fhgr:teiltBüroMit fhgr:Rölke .
-			</code>
-			<p>→ Folgerung: fhgr:Rölke fhgr:teiltBüroMit fhgr:Mundani</p>
-		</details>
-		<details>
-			<summary>Inverse Rolle</summary>
-			<p>Nur abstrakte Rollen dürfen symmetrisch, inverse und transitiv sein</p>
-			<h2>Definition</h2>
-			<code>owl:inverseOf</code>
-			<h2>Beispiel</h2>
-			<code>
-				fhgr:betreut owl:inverseOf fhgr:wirdBetreut .<br />
-				fhgr:Dozent fhgr:betreut fhgr:Student .
-			</code>
-			<p>→ Folgerung: fhgr:Student fhgr:wirdBetreut fhgr:Dozent</p>
-		</details>
-		<details>
-			<summary>Transitive Rolle</summary>
-			<p>Nur abstrakte Rollen dürfen symmetrisch, inverse und transitiv sein</p>
-			<h2>Definition</h2>
-			<code>owl:TransitiveProperty</code>
-			<h2>Beispiel</h2>
-			<code>
-				fhgr:kennt rdf:type owl:TransitiveProperty .<br />
-				fhgr:Mundani fhgr:kennt fhgr:Rölke .<br />
-				fhgr:Rölke fhgr:kennt fhgr:Barkow .
-			</code>
-			<p>→ Folgerung: fhgr:Mundani fhgr:kennt fhgr:Barkow</p>
-		</details>
-		<details>
-			<summary>Funktionale Rolle</summary>
-			<p>Besagt, dass eine Rolle einen eindeutigen Wert hat (d.h. aus A steht in Beziehung zu B und
-A steht in Beziehung zu C folgt, dass B und C identisch sind)</p>
-			<h2>Definition</h2>
-			<code>owl:FunctionalProperty</code>
-			<h2>Beispiel</h2>
-			<code>
-				ch:hatHauptort rdf:type owl:FunctionalProperty .<br />
-				ch:Graubünden ch:hatHauptort ch:Chur .<br />
-				ch:Graubünden ch:hatHauptort ch:Cuira .
-			</code>
-			<p>→ Folgerung: ch:Chur owl:sameAs ch:Cuira</p>
-		</details>
-		<details>
-			<summary>Inverse Funktionale Rolle</summary>
-			<p>besagt, dass eine Rolle ein Argument eindeutig identifiziert (d.h. aus A steht in Beziehung zu
-C und B steht in Beziehung zu C folgt, dass A und B identisch sind)</p>
-			<h2>Definition</h2>
-			<code>owl:InverseFunctionalProperty</code>
-			<h2>Beispiel</h2>
-			<code>
-				ch:istHauptortVon rdf:type owl:InverseFunctionalProperty .<br />
-				ch:Chur ch:istHauptortVon ch:Graubünden .<br />
-				ch:Cuira ch:istHauptortVon ch:Graubünden .
-			</code>
-			<p>→ Folgerung: ch:Chur owl:sameAs ch:Cuira</p>
-		</details>
-		<details>
-			<summary>Rollenbeschränkungen</summary>
-			<p>Aufbau von Restriktionen:</p>
-			<ul>
-				<li>Angabe der Rolle (owl:onProperty), auf die sich die Restriktion bezieht</li>
-				<li>Angabe der Beschränkung auf
-					<ul>
-						<li>Werte (owl:allValuesFrom, owl:someValuesFrom)</li>
-						<li>Kardinalitäten (owl:minCardinality, owl:maxCardinality, owl:Cardinality)</li>
-					</ul>
-				</li>
-				<li>Kardinalitäts- und Wertrestriktionen sind nicht kombinierbar</li>
-			</ul>
-			<details>
-				<summary>owl:allValuesFrom</summary>
-				<p>Deklaration von Aussagen über alle Elemente einer Klasse. Das bedeutet, alle Werte müssen einer bestimmten Klasse angehören</p>
-				<h2>Beispiel</h2>
-				<code>
-					kochen:vegRezept rdf:type owl:Class ;<br />
-					&nbsp;&nbsp;&nbsp;owl:subClassOf [<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rdf:type owl:Restriction ;<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:onProperty kochen:hatZutat ;<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:allValuesFrom kochen:Gemüse<br />
-					&nbsp;&nbsp;&nbsp;] .
-				</code>
-			</details>
-			<details>
-				<summary>owl:someValuesFrom</summary>
-				<p>Deklaration von Aussagen über mindestens ein Element einer Klasse. Das bedeutet, mindestens ein Wert muss einer bestimmten Klasse angehören.</p>
-				<h2>Beispiel</h2>
-				<code>
-					sport:Ballsport rdf:type owl:Class ;<br />
-					&nbsp;&nbsp;&nbsp;owl:subClassOf [<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rdf:type owl:Restriction ;<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:onProperty sport:benötigt ;<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:someValuesFrom sport:Ball<br />
-					&nbsp;&nbsp;&nbsp;] .
-				</code>
-				<p>→ Folgerung: für Ballsportarten wird ein Ball benötigt</p>
-			</details>
-			<details>
-				<summary>owl:hasValue</summary>
-				<p>Sonderfall: existentielle Quantifizierung (owl:hasValue). Problem: owl:someValuesFrom benötigt Klasse als Objekt</p>
-				<h2>Beispiel</h2>
-				<code>
-					fhgr:Prüfung rdf:type owl:Class ;<br />
-					&nbsp;&nbsp;&nbsp;owl:subClassOf [<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rdf:type owl:Restriction ;<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:onProperty fhgr:hatPrüfer ;<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:hasValue fhgr:Mundani<br />
-					&nbsp;&nbsp;&nbsp;] .
-				</code>
-				<p>→ Folgerung: jede fhgr:Prüfung hat fhgr:Mundani als Prüfer</p>
-			</details>
-			<details>
-				<summary>owl:maxCardinality</summary>
-				<p>Deklaration von Aussagen über obere Schranken von Elementen einer Klasse. Das bedeutet, es darf höchstens xx Werte geben</p>
-				<h2>Beispiel</h2>
-				<code>
-					fhgr:BachelorArbeit rdf:type owl:Class ;<br />
-					&nbsp;&nbsp;&nbsp;owl:subClassOf [<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rdf:type owl:Restriction ;<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:onProperty fhgr:hatReferent ;<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:maxCardinality 2^^xsd:nonNegativeInteger<br />
-					&nbsp;&nbsp;&nbsp;] .
-				</code>
-				<p>→ Folgerung: jede fhgr:BachelorArbeit hat höchstens zwei Referenten</p>
-			</details>
-			<details>
-				<summary>owl:minCardinality</summary>
-				<p>Deklaration von Aussagen über untere Schranken von Elementen einer Klasse. Das bedeutet, es muss mindestens xx Werte geben</p>
-				<h2>Beispiel</h2>
-				<code>
-					fhgr:Prüfung rdf:type owl:Class ;<br />
-					&nbsp;&nbsp;&nbsp;owl:subClassOf [<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rdf:type owl:Restriction ;<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:onProperty fhgr:hatThemen ;<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:minCardinality 5^^xsd:nonNegativeInteger<br />
-					&nbsp;&nbsp;&nbsp;] .
-				</code>
-				<p>→ Folgerung: jede fhgr:Prüfung hat mindestens fünf Themengebiete</p>
-			</details>
-			<details>
-				<summary>owl:cardinality</summary>
-				<p>Deklaration von Aussagen über exakte Kardinalitäten von Elementen einer Klasse. Das bedeutet, es muss exakt xx Werte geben</p>
-				<h2>Beispiel</h2>
-				<code>
-					bio:Mensch rdf:type owl:Class ;<br />
-					&nbsp;&nbsp;&nbsp;owl:subClassOf [<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rdf:type owl:Restriction ;<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:onProperty bio:hatMutter ;<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:cardinality 1^^xsd:nonNegativeInteger<br />
-					&nbsp;&nbsp;&nbsp;] .
-				</code>
-				<p>→ Folgerung: jeder :Mensch hat genau eine (biologische) Mutter</p>
-			</details>
+    <details>
+        <summary>Klassen</summary>
+        <p>
+            Klassen in OWL sind vergleichbar mit Klassen in RDFS.
+        </p>
+        <h2>Definition</h2>
+        <code>owl:Class</code>
+        <h2>Beispiel</h2>
+        <code>ex:Pinguin a owl:Class .</code>
+        <details>
+            <summary>Subklassen</summary>
+            <p>Werden wie in RDFS definiert.</p>
+            <h2>Definition</h2>
+            <code>rdfs:SubClassOf</code>
+            <h2>Beispiel</h2>
+            <code>ex:Pinguin rdfs:subClassOf ex:Tier .</code>
+        </details>
+        <details>
+            <summary>Vordefinierte Klassen</summary>
+            <h2>owl:Thing</h2>
+            <p>Oberklasse aller Klassen. Enthält alle Individuen. Jede Klasse C ist Unterklasse von owl:Thing.</p>
+            <code>C rdfs:subClassOf owl:Thing .</code>
+            <h2>owl:Nothing</h2>
+            <p>Subklasse aller Klassen. Enthält keine Individuen. Jede Klasse C ist Oberklasse von owl:Nothing.</p>
+            <code>owl:Nothing rdfs:subClassOf C .</code>
+        </details>
+        <details>
+            <summary>Klassenbeziehungen</summary>
+            <details>
+                <summary>Disjunktion (Keine gemeinsamen Elemente)</summary>
+                <p>Zwei Klassen sind disjunkt, wenn sie keine gemeinsamen Elemente beinhalten (leere Schnittmenge).</p>
+                <h2>Definition</h2>
+                <code>owl:disjointWith</code>
+                <h2>Beispiel</h2>
+                <code>
+                    fhgr:Dozent rdfs:subClassOf fhgr:Mitarbeiter .<br/>
+                    fhgr:Freshman rdfs:subClassOf fhgr:Student .<br/>
+                    fhgr:Mitarbeiter owl:disjointWith fhgr:Student .
+                </code>
+                → Folgerung Dozent und Freshman sind ebenfalls disjunkt.
+            </details>
+            <details>
+                <summary>Äquivalenz (dieselben Elemente beinhalten)</summary>
+                <p>Zwei Klassen sind äquivalent, wenn sie dieselben Elemente beinhalten, d.h. Teilmenge der jeweils
+                    anderen
+                    Klasse sind.
+                    <code>owl:disjointWith</code>
+                <h2>Beispiel</h2>
+                <code>
+                    fhgr:Buch rdfs:subClassOf fhgr:Publikation .<br/>
+                    fhgr:Publikation owl:equivalentClass fhgr:Veröffentlichung .
+                </code>
+                → Folgerung fhgr:Buch ist auch Unterklasse von fhgr:Veröffentlichung.
+            </details>
+        </details>
+        <details>
+            <summary>Logische Konstruktoren</summary>
+            <p>Erzeugung komplexer Klassen aus einfachen Klassen mittels logischer Konstruktoren</p>
+            <details>
+                <summary>Konjunktion (und)</summary>
+                <p>Umfasst alle Objekte zweier Klassen, die gleichzeitig zu beiden Klassen gehören</p>
+                <h2>Definition</h2>
+                <code>owl:intersectionOf</code>
+                <h2>Beispiel</h2>
+                <code>
+                    fhgr:DozentDAViS rdf:type owl:Class ;<br/>
+                    &nbsp;&nbsp;&nbsp;owl:equivalentClass [<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rdf:type owl:Class ;<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:intersectionOf ( fhgr:Dozent fhgr:MitarbeiterDAViS )<br/>
+                    &nbsp;&nbsp;&nbsp;] .
+                </code>
+                <p>→ Folgerung: jede(r) :DozentDAViS ist :Dozent und :MitarbeiterDAViS <br/>→ Folgerung: jede(r) :Dozent
+                    und
+                    :MitarbeiterDAViS ist auch :DozentDAViS</p>
+            </details>
+            <details>
+                <summary>Disjunktion (oder)</summary>
+                <p>Umfasst alle Objekte mehrerer Klassen, die zu (mindestens) einer der Klassen gehören</p>
+                <h2>Definition</h2>
+                <code>owl:unionOf</code>
+                <h2>Beispiel</h2>
+                <code>
+                    fhgr:Mitarbeiter rdf:type owl:Class ;<br/>
+                    &nbsp;&nbsp;&nbsp;owl:subClassOf [<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rdf:type owl:Class ;<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:unionOf ( fhgr:Dozentin fhgr:Assistentin fhgr:Sekretärin
+                    )<br/>
+                    &nbsp;&nbsp;&nbsp;] .
+                </code>
+                <p>→ Folgerung: jede(r) :Dozentin, :Assistentin und :Sekretärin ist :Mitarbeiter</p>
+            </details>
+            <details>
+                <summary>Komplement (nicht)</summary>
+                <p>Umfasst alle Objekte die nicht zu einer Klasse gehören</p>
+                <h2>Definition</h2>
+                <code>owl:complementOf</code>
+                <h2>Beispiel</h2>
+                <code>
+                    fhgr:Dozent rdf:type owl:Class ;
+                    &nbsp;&nbsp;&nbsp;owl:subClassOf [
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rdf:type owl:Class ;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:complementOf fhgr:Student
+                    &nbsp;&nbsp;&nbsp;] .
+                </code>
+                <p>→ Folgerung: Kein :Dozent ist :Student</p>
+            </details>
+        </details>
+    </details>
+    <details>
+        <summary>Individuen</summary>
+        <p>Vergleichbar mit Objekten in RDFS. Muss nicht zwingend angegeben werden</p>
+        <h2>Definition</h2>
+        <code>owl:NamedIndividual</code>
+        <h2>Beispiel einer Instanz</h2>
+        <code>ex:Pingu a owl:NamedIndividual , ex:Pinguin .</code>
+        <details>
+            <summary>Gleichheit</summary>
+            <p>Besagt, dass zwei Individuen identisch sind (Eigentlich zwei Bezeichner bezeichnen dasselbe Individum).
+                Behebt Problematik non unique naming assumption.</p>
+            <h2>Definition</h2>
+            <code>owl:sameAs</code>
+            <h2>Beispiel</h2>
+            <code>ch:Graubünden owl:sameAs ch:Grischun .</code>
+        </details>
+        <details>
+            <summary>Ungleichheit</summary>
+            <p>Gegenteil von owl:sameAs.</p>
+            <h2>Definition</h2>
+            <code>owl:differentFrom</code>
+            <h2>Beispiel</h2>
+            <code>ch:Chur owl:differentFrom ch:Bern .</code>
+            <h2>Einfachere Notation für viele Individuen</h2>
+            <p>Verschiedenheit einer Menge von Individuen mithilfe von Listen.</p>
+            <code>owl:AllDifferent / owl:distinctMembers</code>
+            <h2>Beispiel</h2>
+            <code>
+                [] rdf:type owl:AllDifferent ;<br/>
+                &nbsp;&nbsp;&nbsp;owl:distinctMembers ( ex:Fisch ex:Säugetier ex:Amphibie ) .
+            </code>
+        </details>
+        <details>
+            <summary>Individuen als Klassen</summary>
+            <p>Definition von Klassen durch Aufzählung der darin enthaltenen Individuen.</p>
+            <h2>Definition</h2>
+            <code>owl:oneOf</code>
+            <h2>Beispiel</h2>
+            <code>
+                fhgr:TeamDAViS owl:equivalentClass [<br/>
+                &nbsp;&nbsp;&nbsp;owl:oneOf ( fhgr:Rölke fhgr:Mundani fhgr:Burch ) <br/>
+                ] .
+            </code>
+            → Folgerung: fhgr:TeamDAViS besteht aus fhgr:Rölke, fhgr:Mundani und fhgr:Burch
+        </details>
 
-		</details>
-	</details>
+    </details>
+    <details>
+        <summary>Rollen</summary>
+        <p>Sind Properties wie in RDFS, allerdings wird zwischen zwei Arten von Rollen unterschieden. Beides ist
+            Unterklasse
+            von rdf:Property. Beschränkungen werden wie bei RDFS definiert (rdfs:domain, rdfs:range).</p>
+        <details>
+            <summary>Abstrakte Rolle</summary>
+            <p>Verbindet Individuen mit Individuen.</p>
+            <code>owl:ObjectProperty</code>
+            <h3>Beispiel</h3>
+            <code>
+                ex:lehrt rdf:type owl:ObjectProperty ;<br/>
+                &nbsp;&nbsp;&nbsp;rdfs:domain fhgr:Person ;<br/>
+                &nbsp;&nbsp;&nbsp;rdfs:range fhgr:Vorlesung .<br/>
+                fhgr:Mundani fhgr:lehrt fhgr:SESY .
+            </code>
+        </details>
+        <details>
+            <summary>Konkrete Rolle</summary>
+            <p>Verbindet Individuen mit Datenwerten (Elementen von Datentypen).</p>
+            <code>owl:DatatypeProperty</code>
+            <h3>Beispiel</h3>
+            <code>
+                fhgr:hatBüro rdf:type owl:DatatypeProperty ;<br/>
+                &nbsp;&nbsp;&nbsp;rdfs:domain fhgr:Person ;<br/>
+                &nbsp;&nbsp;&nbsp;rdfs:range xsd:string .<br/>
+                fhgr:Mundani fhgr:hatBüro "B4.05" .
+            </code>
+        </details>
+        <details>
+            <summary>Gleichheit</summary>
+            <p>besagt, dass zwei Rollen identisch sind (d.h. zwei Bezeichner bezeichnen dieselbe Rolle).</p>
+            <h2>Definition</h2>
+            <code>owl:equivalentProperty</code>
+            <h2>Beispiel</h2>
+            <code>fhgr:lehrt owl:equivalentProperty ch:unterrichtet .</code>
+        </details>
+        <details>
+            <summary>Ungleichheit</summary>
+            <p>Gegenteil von owl:sameAs.</p>
+            <h2>Definition</h2>
+            <code>owl:differentFrom</code>
+            <h2>Beispiel</h2>
+            <code>ch:Chur owl:differentFrom ch:Bern .</code>
+        </details>
+        <details>
+            <summary>Symmetrische Rolle</summary>
+            <p>Nur abstrakte Rollen dürfen symmetrisch, inverse und transitiv sein</p>
+            <h2>Definition</h2>
+            <code>owl:symmetricProperty</code>
+            <h2>Beispiel</h2>
+            <code>
+                fhgr:teiltBüroMit rdf:type owl:symmetricProperty .<br/>
+                fhgr:Mundani fhgr:teiltBüroMit fhgr:Rölke .
+            </code>
+            <p>→ Folgerung: fhgr:Rölke fhgr:teiltBüroMit fhgr:Mundani</p>
+        </details>
+        <details>
+            <summary>Inverse Rolle</summary>
+            <p>Nur abstrakte Rollen dürfen symmetrisch, inverse und transitiv sein</p>
+            <h2>Definition</h2>
+            <code>owl:inverseOf</code>
+            <h2>Beispiel</h2>
+            <code>
+                fhgr:betreut owl:inverseOf fhgr:wirdBetreut .<br/>
+                fhgr:Dozent fhgr:betreut fhgr:Student .
+            </code>
+            <p>→ Folgerung: fhgr:Student fhgr:wirdBetreut fhgr:Dozent</p>
+        </details>
+        <details>
+            <summary>Transitive Rolle</summary>
+            <p>Nur abstrakte Rollen dürfen symmetrisch, inverse und transitiv sein</p>
+            <h2>Definition</h2>
+            <code>owl:TransitiveProperty</code>
+            <h2>Beispiel</h2>
+            <code>
+                fhgr:kennt rdf:type owl:TransitiveProperty .<br/>
+                fhgr:Mundani fhgr:kennt fhgr:Rölke .<br/>
+                fhgr:Rölke fhgr:kennt fhgr:Barkow .
+            </code>
+            <p>→ Folgerung: fhgr:Mundani fhgr:kennt fhgr:Barkow</p>
+        </details>
+        <details>
+            <summary>Funktionale Rolle</summary>
+            <p>Besagt, dass eine Rolle einen eindeutigen Wert hat (d.h. aus A steht in Beziehung zu B und
+                A steht in Beziehung zu C folgt, dass B und C identisch sind)</p>
+            <h2>Definition</h2>
+            <code>owl:FunctionalProperty</code>
+            <h2>Beispiel</h2>
+            <code>
+                ch:hatHauptort rdf:type owl:FunctionalProperty .<br/>
+                ch:Graubünden ch:hatHauptort ch:Chur .<br/>
+                ch:Graubünden ch:hatHauptort ch:Cuira .
+            </code>
+            <p>→ Folgerung: ch:Chur owl:sameAs ch:Cuira</p>
+        </details>
+        <details>
+            <summary>Inverse Funktionale Rolle</summary>
+            <p>besagt, dass eine Rolle ein Argument eindeutig identifiziert (d.h. aus A steht in Beziehung zu
+                C und B steht in Beziehung zu C folgt, dass A und B identisch sind)</p>
+            <h2>Definition</h2>
+            <code>owl:InverseFunctionalProperty</code>
+            <h2>Beispiel</h2>
+            <code>
+                ch:istHauptortVon rdf:type owl:InverseFunctionalProperty .<br/>
+                ch:Chur ch:istHauptortVon ch:Graubünden .<br/>
+                ch:Cuira ch:istHauptortVon ch:Graubünden .
+            </code>
+            <p>→ Folgerung: ch:Chur owl:sameAs ch:Cuira</p>
+        </details>
+        <details>
+            <summary>Rollenbeschränkungen</summary>
+            <p>Aufbau von Restriktionen:</p>
+            <ul>
+                <li>Angabe der Rolle (owl:onProperty), auf die sich die Restriktion bezieht</li>
+                <li>Angabe der Beschränkung auf
+                    <ul>
+                        <li>Werte (owl:allValuesFrom, owl:someValuesFrom)</li>
+                        <li>Kardinalitäten (owl:minCardinality, owl:maxCardinality, owl:Cardinality)</li>
+                    </ul>
+                </li>
+                <li>Kardinalitäts- und Wertrestriktionen sind nicht kombinierbar</li>
+            </ul>
+            <details>
+                <summary>owl:allValuesFrom</summary>
+                <p>Deklaration von Aussagen über alle Elemente einer Klasse. Das bedeutet, alle Werte müssen einer
+                    bestimmten Klasse angehören</p>
+                <h2>Beispiel</h2>
+                <code>
+                    kochen:vegRezept rdf:type owl:Class ;<br/>
+                    &nbsp;&nbsp;&nbsp;owl:subClassOf [<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rdf:type owl:Restriction ;<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:onProperty kochen:hatZutat ;<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:allValuesFrom kochen:Gemüse<br/>
+                    &nbsp;&nbsp;&nbsp;] .
+                </code>
+            </details>
+            <details>
+                <summary>owl:someValuesFrom</summary>
+                <p>Deklaration von Aussagen über mindestens ein Element einer Klasse. Das bedeutet, mindestens ein Wert
+                    muss
+                    einer bestimmten Klasse angehören.</p>
+                <h2>Beispiel</h2>
+                <code>
+                    sport:Ballsport rdf:type owl:Class ;<br/>
+                    &nbsp;&nbsp;&nbsp;owl:subClassOf [<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rdf:type owl:Restriction ;<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:onProperty sport:benötigt ;<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:someValuesFrom sport:Ball<br/>
+                    &nbsp;&nbsp;&nbsp;] .
+                </code>
+                <p>→ Folgerung: für Ballsportarten wird ein Ball benötigt</p>
+            </details>
+            <details>
+                <summary>owl:hasValue</summary>
+                <p>Sonderfall: existentielle Quantifizierung (owl:hasValue). Problem: owl:someValuesFrom benötigt Klasse
+                    als
+                    Objekt</p>
+                <h2>Beispiel</h2>
+                <code>
+                    fhgr:Prüfung rdf:type owl:Class ;<br/>
+                    &nbsp;&nbsp;&nbsp;owl:subClassOf [<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rdf:type owl:Restriction ;<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:onProperty fhgr:hatPrüfer ;<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:hasValue fhgr:Mundani<br/>
+                    &nbsp;&nbsp;&nbsp;] .
+                </code>
+                <p>→ Folgerung: jede fhgr:Prüfung hat fhgr:Mundani als Prüfer</p>
+            </details>
+            <details>
+                <summary>owl:maxCardinality</summary>
+                <p>Deklaration von Aussagen über obere Schranken von Elementen einer Klasse. Das bedeutet, es darf
+                    höchstens
+                    xx Werte geben</p>
+                <h2>Beispiel</h2>
+                <code>
+                    fhgr:BachelorArbeit rdf:type owl:Class ;<br/>
+                    &nbsp;&nbsp;&nbsp;owl:subClassOf [<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rdf:type owl:Restriction ;<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:onProperty fhgr:hatReferent ;<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:maxCardinality 2^^xsd:nonNegativeInteger<br/>
+                    &nbsp;&nbsp;&nbsp;] .
+                </code>
+                <p>→ Folgerung: jede fhgr:BachelorArbeit hat höchstens zwei Referenten</p>
+            </details>
+            <details>
+                <summary>owl:minCardinality</summary>
+                <p>Deklaration von Aussagen über untere Schranken von Elementen einer Klasse. Das bedeutet, es muss
+                    mindestens xx Werte geben</p>
+                <h2>Beispiel</h2>
+                <code>
+                    fhgr:Prüfung rdf:type owl:Class ;<br/>
+                    &nbsp;&nbsp;&nbsp;owl:subClassOf [<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rdf:type owl:Restriction ;<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:onProperty fhgr:hatThemen ;<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:minCardinality 5^^xsd:nonNegativeInteger<br/>
+                    &nbsp;&nbsp;&nbsp;] .
+                </code>
+                <p>→ Folgerung: jede fhgr:Prüfung hat mindestens fünf Themengebiete</p>
+            </details>
+            <details>
+                <summary>owl:cardinality</summary>
+                <p>Deklaration von Aussagen über exakte Kardinalitäten von Elementen einer Klasse. Das bedeutet, es muss
+                    exakt xx Werte geben</p>
+                <h2>Beispiel</h2>
+                <code>
+                    bio:Mensch rdf:type owl:Class ;<br/>
+                    &nbsp;&nbsp;&nbsp;owl:subClassOf [<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rdf:type owl:Restriction ;<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:onProperty bio:hatMutter ;<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:cardinality 1^^xsd:nonNegativeInteger<br/>
+                    &nbsp;&nbsp;&nbsp;] .
+                </code>
+                <p>→ Folgerung: jeder :Mensch hat genau eine (biologische) Mutter</p>
+            </details>
+
+        </details>
+    </details>
+</details>
 </body>
 </html>
