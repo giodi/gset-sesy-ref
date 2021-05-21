@@ -191,17 +191,24 @@
         code {
             background: #000;
             color: #00ff3b;
-            font-weight: 600;
+            font-weight: 400;
             border: 1px solid #000;
             padding: 1rem;
             width: 100%;
             display: block;
             margin-top: 1rem;
             line-height: 1.5;
+            font-family: monospace;
         }
 
         code + details {
             margin-top: 2rem;
+        }
+
+        svg{
+            background: #fff;
+            padding: 20px;
+            margin-top: 16px;
         }
 
         h2,
@@ -236,6 +243,11 @@
             display: inline;
         }
 
+        figcaption{
+            font-size: 1.4rem;
+            padding-bottom: 2rem;
+        }
+
     </style>
 </head>
 <body>
@@ -243,6 +255,7 @@
     <summary>Terse RDF Triple Language (Turtle)</summary>
     <p>Turtle ist eine Syntax um RDF Graphen textlich abzubilden. Ein RDF Graph besteht aus den zwei Knoten über eine
         gerichtete Kante verbunden (Subjekt, Prädikat, Objekt).</p>
+    <figure>
     <svg width="500" height="100%" viewBox="0 0 399 86" version="1.1" xmlns="http://www.w3.org/2000/svg"
          xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
          style="fill-rule:evenodd;clip-rule:evenodd;stroke-miterlimit:10;">
@@ -261,6 +274,8 @@
         <circle cx="362.5" cy="33.5" r="20"/>
         <circle cx="42.5" cy="33.5" r="20"/>
     </svg>
+        <figcaption>Visuelle Darstellung eines RDF Graphen.</figcaption>
+    </figure>
     <details>
         <summary>Simples Tripel (x y z .)</summary>
         <p>Ein simple Aussage besteht aus der Abfolge von Subjekt, Prädikat, Objekt jeweils durch ein Leerzeichen
