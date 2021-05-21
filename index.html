@@ -45,7 +45,8 @@
             display: block;
         }
 
-        body {
+        body{
+            background: #bbb;
             line-height: 1;
             font-size: 1.6rem;
             padding: 2.4rem;
@@ -59,16 +60,6 @@
 
         ul li {
             margin-top: 0.5rem;
-        }
-
-        blockquote, q {
-            quotes: none;
-        }
-
-        blockquote:before, blockquote:after,
-        q:before, q:after {
-            content: '';
-            content: none;
         }
 
         table {
@@ -150,7 +141,6 @@
         header button {
             font-size: 1.6rem;
             padding: 0.5rem;
-
         }
 
         main {
@@ -160,19 +150,17 @@
         }
 
         details {
-            background: #ccc;
-            padding: 1rem;
-            margin-top: 1rem;
+            background: #eeeeee;
+            padding: 16px;
+            margin-top: 16px;
+            border-radius: 3px;
+            border: 3px solid #000;
         }
 
         details details {
-            background: #fff;
+            background: #eeeeee;
             padding: 1rem;
             margin: .5rem 0 0;
-        }
-
-        details details details {
-            background: #eee;
         }
 
         details summary {
@@ -199,6 +187,7 @@
             margin-top: 1rem;
             line-height: 1.5;
             font-family: monospace;
+            border-radius: 3px;
         }
 
         code a{
@@ -229,27 +218,14 @@
             margin-top: 0;
         }
 
-        .MathJax {
-            display: block;
-            margin-top: 1.6rem;
-        }
-
-        p .MathJax,
-        li .MathJax,
-        summary .MathJax {
-            display: inline-block;
-            margin-top: 0;
-        }
-
-        p math,
-        summary math,
-        li math {
-            display: inline;
+        p{
+            max-width: 80rem;
         }
 
         figcaption{
             font-size: 1.4rem;
-            padding-bottom: 2rem;
+            padding: 8px 0 16px;
+            font-style: italic;
         }
 
     </style>
@@ -280,7 +256,7 @@
     </svg>
         <figcaption>Visuelle Darstellung eines RDF Graphen.</figcaption>
     </figure>
-    <h2>Beispiel eines Turtle Dokuments (mit Verweisen)</h2>
+    <h2>Beispiel eines Turtle Dokuments</h2>
     <code>
         <a href="#prefix">@prefix ex: &lt;http://example.org/&gt;</a> .<br />
         @prefix dc: &lt;http://purl.org/dc/elements/1.1/&gt; .<br />
