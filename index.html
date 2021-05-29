@@ -838,7 +838,7 @@
             <code>ex:Pinguin rdfs:subClassOf ex:Tier .</code>
         </details>
         <details>
-            <summary>Vordefinierte Klassen</summary>
+            <summary>Vordefinierte Klassen (owl:Thing & owl:Nothing)</summary>
             <h2>owl:Thing</h2>
             <p>Oberklasse aller Klassen. Enthält alle Individuen. Jede Klasse C ist Unterklasse von owl:Thing.</p>
             <code>C rdfs:subClassOf owl:Thing .</code>
@@ -849,7 +849,7 @@
         <details>
             <summary>Klassenbeziehungen</summary>
             <details>
-                <summary>Disjunktion (Keine gemeinsamen Elemente)</summary>
+                <summary>Disjunktion: Keine gemeinsamen Elemente (owl:disjointWith)</summary>
                 <p>Zwei Klassen sind disjunkt, wenn sie keine gemeinsamen Elemente beinhalten (leere Schnittmenge).</p>
                 <h2>Definition</h2>
                 <code>owl:disjointWith</code>
@@ -864,11 +864,10 @@
                 </p>
             </details>
             <details>
-                <summary>Äquivalenz (dieselben Elemente beinhalten)</summary>
+                <summary>Äquivalenz: dieselben Elemente beinhalten (owl:equivalentClass)</summary>
                 <p>Zwei Klassen sind äquivalent, wenn sie dieselben Elemente beinhalten, d.h. Teilmenge der jeweils
-                    anderen
-                    Klasse sind.
-                    <code>owl:disjointWith</code>
+                    anderen Klasse sind.
+                    <code>owl:equivalentClass</code>
                 <h2>Beispiel</h2>
                 <code>
                     fhgr:Buch rdfs:subClassOf fhgr:Publikation .<br/>
@@ -881,7 +880,7 @@
             <summary>Logische Konstruktoren</summary>
             <p>Erzeugung komplexer Klassen aus einfachen Klassen mittels logischer Konstruktoren</p>
             <details>
-                <summary>Konjunktion (und)</summary>
+                <summary>Konjunktion: Und (owl:intersectionOf)</summary>
                 <p>Umfasst alle Objekte zweier Klassen, die gleichzeitig zu beiden Klassen gehören</p>
                 <h2>Definition</h2>
                 <code>owl:intersectionOf</code>
@@ -898,7 +897,7 @@
                     :MitarbeiterDAViS ist auch :DozentDAViS</p>
             </details>
             <details>
-                <summary>Disjunktion (oder)</summary>
+                <summary>Disjunktion: Oder (owl:unionOf)</summary>
                 <p>Umfasst alle Objekte mehrerer Klassen, die zu (mindestens) einer der Klassen gehören</p>
                 <h2>Definition</h2>
                 <code>owl:unionOf</code>
@@ -914,7 +913,7 @@
                 <p>→ Folgerung: jede(r) :Dozentin, :Assistentin und :Sekretärin ist :Mitarbeiter</p>
             </details>
             <details>
-                <summary>Komplement (nicht)</summary>
+                <summary>Komplement: Nicht (owl:complementOf)</summary>
                 <p>Umfasst alle Objekte die nicht zu einer Klasse gehören</p>
                 <h2>Definition</h2>
                 <code>owl:complementOf</code>
@@ -931,14 +930,14 @@
         </details>
     </details>
     <details>
-        <summary>Individuen</summary>
+        <summary>Individuen (owl:NamedIndividual)</summary>
         <p>Vergleichbar mit Objekten in RDFS. Muss nicht zwingend angegeben werden</p>
         <h2>Definition</h2>
         <code>owl:NamedIndividual</code>
         <h2>Beispiel einer Instanz</h2>
         <code>ex:Pingu a owl:NamedIndividual , ex:Pinguin .</code>
         <details>
-            <summary>Gleichheit</summary>
+            <summary>Gleichheit (owl:sameAs)</summary>
             <p>Besagt, dass zwei Individuen identisch sind (Eigentlich zwei Bezeichner bezeichnen dasselbe Individum).
                 Behebt Problematik non unique naming assumption.</p>
             <h2>Definition</h2>
@@ -947,7 +946,7 @@
             <code>ch:Graubünden owl:sameAs ch:Grischun .</code>
         </details>
         <details>
-            <summary>Ungleichheit</summary>
+            <summary>Ungleichheit (owl:differentFrom)</summary>
             <p>Gegenteil von owl:sameAs.</p>
             <h2>Definition</h2>
             <code>owl:differentFrom</code>
@@ -963,7 +962,7 @@
             </code>
         </details>
         <details>
-            <summary>Individuen als Klassen</summary>
+            <summary>Individuen als Klassen (owl:oneOf)</summary>
             <p>Definition von Klassen durch Aufzählung der darin enthaltenen Individuen.</p>
             <h2>Definition</h2>
             <code>owl:oneOf</code>
@@ -973,17 +972,15 @@
                 &nbsp;&nbsp;&nbsp;owl:oneOf ( fhgr:Rölke fhgr:Mundani fhgr:Burch ) <br/>
                 ] .
             </code>
-            → Folgerung: fhgr:TeamDAViS besteht aus fhgr:Rölke, fhgr:Mundani und fhgr:Burch
+            <p>→ Folgerung: fhgr:TeamDAViS besteht aus fhgr:Rölke, fhgr:Mundani und fhgr:Burch</p>
         </details>
-
     </details>
     <details>
         <summary>Rollen</summary>
         <p>Sind Properties wie in RDFS, allerdings wird zwischen zwei Arten von Rollen unterschieden. Beides ist
-            Unterklasse
-            von rdf:Property. Beschränkungen werden wie bei RDFS definiert (rdfs:domain, rdfs:range).</p>
+            Unterklasse von rdf:Property. Beschränkungen werden wie bei RDFS definiert (rdfs:domain, rdfs:range).</p>
         <details>
-            <summary>Abstrakte Rolle</summary>
+            <summary>Abstrakte Rolle (owl:ObjectProperty)</summary>
             <p>Verbindet Individuen mit Individuen.</p>
             <code>owl:ObjectProperty</code>
             <h3>Beispiel</h3>
@@ -995,7 +992,7 @@
             </code>
         </details>
         <details>
-            <summary>Konkrete Rolle</summary>
+            <summary>Konkrete Rolle (owl:DatatypeProperty)</summary>
             <p>Verbindet Individuen mit Datenwerten (Elementen von Datentypen).</p>
             <code>owl:DatatypeProperty</code>
             <h3>Beispiel</h3>
@@ -1007,7 +1004,7 @@
             </code>
         </details>
         <details>
-            <summary>Gleichheit</summary>
+            <summary>Gleichheit (owl:equivalentProperty)</summary>
             <p>besagt, dass zwei Rollen identisch sind (d.h. zwei Bezeichner bezeichnen dieselbe Rolle).</p>
             <h2>Definition</h2>
             <code>owl:equivalentProperty</code>
@@ -1015,7 +1012,7 @@
             <code>fhgr:lehrt owl:equivalentProperty ch:unterrichtet .</code>
         </details>
         <details>
-            <summary>Ungleichheit</summary>
+            <summary>Ungleichheit (owl:differentFrom)</summary>
             <p>Gegenteil von owl:sameAs.</p>
             <h2>Definition</h2>
             <code>owl:differentFrom</code>
@@ -1023,7 +1020,7 @@
             <code>ch:Chur owl:differentFrom ch:Bern .</code>
         </details>
         <details>
-            <summary>Symmetrische Rolle</summary>
+            <summary>Symmetrische Rolle (owl:symmetricProperty)</summary>
             <p>Nur abstrakte Rollen dürfen symmetrisch, inverse und transitiv sein</p>
             <h2>Definition</h2>
             <code>owl:symmetricProperty</code>
@@ -1035,7 +1032,7 @@
             <p>→ Folgerung: fhgr:Rölke fhgr:teiltBüroMit fhgr:Mundani</p>
         </details>
         <details>
-            <summary>Inverse Rolle</summary>
+            <summary>Inverse Rolle (owl:inverseOf)</summary>
             <p>Nur abstrakte Rollen dürfen symmetrisch, inverse und transitiv sein</p>
             <h2>Definition</h2>
             <code>owl:inverseOf</code>
@@ -1047,7 +1044,7 @@
             <p>→ Folgerung: fhgr:Student fhgr:wirdBetreut fhgr:Dozent</p>
         </details>
         <details>
-            <summary>Transitive Rolle</summary>
+            <summary>Transitive Rolle (owl:TransitiveProperty)</summary>
             <p>Nur abstrakte Rollen dürfen symmetrisch, inverse und transitiv sein</p>
             <h2>Definition</h2>
             <code>owl:TransitiveProperty</code>
@@ -1060,7 +1057,7 @@
             <p>→ Folgerung: fhgr:Mundani fhgr:kennt fhgr:Barkow</p>
         </details>
         <details>
-            <summary>Funktionale Rolle</summary>
+            <summary>Funktionale Rolle (owl:FunctionalProperty)</summary>
             <p>Besagt, dass eine Rolle einen eindeutigen Wert hat (d.h. aus A steht in Beziehung zu B und
                 A steht in Beziehung zu C folgt, dass B und C identisch sind)</p>
             <h2>Definition</h2>
@@ -1074,7 +1071,7 @@
             <p>→ Folgerung: ch:Chur owl:sameAs ch:Cuira</p>
         </details>
         <details>
-            <summary>Inverse Funktionale Rolle</summary>
+            <summary>Inverse Funktionale Rolle (owl:InverseFunctionalProperty)</summary>
             <p>besagt, dass eine Rolle ein Argument eindeutig identifiziert (d.h. aus A steht in Beziehung zu
                 C und B steht in Beziehung zu C folgt, dass A und B identisch sind)</p>
             <h2>Definition</h2>
