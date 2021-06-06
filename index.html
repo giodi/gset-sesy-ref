@@ -320,14 +320,14 @@
         <details>
             <summary>Domain & Range</summary>
             <code>
-                p <a href="#prop-domain">rdfs:domain</a> C1 .<br/>
+                p rdf:type C1 .<br/>
                 a p b .<br/>
-                a <abbr title="rdf:type">a</abbr> C1 .<br/>
+                a rdf:type C1 .<br/>
             </code>
             <code>
-                p <a href="#prop-range">rdfs:range</a> C2 .<br/>
+                p rdf:type C2 .<br/>
                 a p b .<br/>
-                b <abbr title="rdf:type">a</abbr> C2 .
+                b rdf:type C2 .
             </code>
 
         </details>
@@ -649,7 +649,7 @@
 
 <details>
     <summary>
-        SPARQL
+        SPARQL Protocol And RDF Query Language (SPARQL)
     </summary>
     <p>SPARQL ist eine Abfragesprache für RDF Graphen mit den Möglichkeiten etwa Konjunktionen oder Disjunktionen
         abzufragen.</p>
@@ -817,6 +817,12 @@
     </details>
 
 </details>
+
+<details>
+    <summary>Sematic Web Rule Language (SWRL)</summary>
+    <p>SWRL ist eine Regelsprache welche von vielen Reasoner unterstützt wird. Mit ihr lassen sich mittels Regeln Beziehungen modellieren, welche mit OWL nicht modellierbar sind. </p>
+</details>
+
 <details>
     <summary>OWL (Web Onotolgy Language)</summary>
 
@@ -919,9 +925,9 @@
                 <code>owl:complementOf</code>
                 <h2>Beispiel</h2>
                 <code>
-                    fhgr:Dozent rdf:type owl:Class ;
-                    &nbsp;&nbsp;&nbsp;owl:subClassOf [
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rdf:type owl:Class ;
+                    fhgr:Dozent rdf:type owl:Class ; <br />
+                    &nbsp;&nbsp;&nbsp;owl:subClassOf [<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rdf:type owl:Class ;<br />
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owl:complementOf fhgr:Student
                     &nbsp;&nbsp;&nbsp;] .
                 </code>
@@ -1086,6 +1092,7 @@
         </details>
         <details>
             <summary>Rollenbeschränkungen</summary>
+            <p>Können auf Klassen (owl:Class) oder Definitions uns Wertebereiche (rdfs:domain, rdfs:range) angewandt werden. Können auch geschachtelt werden.</p>
             <p>Aufbau von Restriktionen:</p>
             <ul>
                 <li>Angabe der Rolle (owl:onProperty), auf die sich die Restriktion bezieht</li>
@@ -1189,7 +1196,87 @@
                 </code>
                 <p>→ Folgerung: jeder :Mensch hat genau eine (biologische) Mutter</p>
             </details>
-
+            <details>
+                <summary>owl:hasSelf</summary>
+                <h2>Beispiel</h2>
+                <code>
+                    ex:Narzisst rdf:type owl:Class ;<br />
+                    owl:subClassOf [<br />
+                    rdf:type owl:Restriction ;<br />
+                    owl:onProperty ex:liebt ;<br />
+                    owl:hasSelf "true"^^xsd:boolean<br />
+                    ] .
+                </code>
+            </details>
+            <details>
+                <summary>owl:dataRange</summary>
+                <h2>Beispiel</h2>
+                <code>
+                    fhgr:Fresh-wo-man rdf:type owl:Class ;<br />
+                    owl:subClassOf [<br />
+                    rdf:type owl:Restriction ;<br />
+                    owl:onProperty fhgr:studiertImSemester<br />
+                    owl:dataRange ( "1"^^xsd:integer "2"^^xsd:integer )<br />
+                    ] .
+                </code>
+            </details>
+            <details>
+                <summary>owl:withRestrictions</summary>
+                <p>Neue Datentypen als Teilmenge bereits existierender Datentypen</p>
+                <h2>Beispiel</h2>
+                <code>
+                    tv:PrimeTime rdf:type rdfs:Datatype ;<br />
+                    owl:equivalentClass [<br />
+                    rdf:type rdfs:Datatype ;<br />
+                    owl:onDatatype xsd:integer ;<br />
+                    owl:withRestrictions (<br />
+                    [ xsd:minInclusive "20"^^xsd:integer ]<br />
+                    [ xsd:maxInclusive "23"^^xsd:integer ]<br />
+                    )<br />
+                    ] .<br />
+                    <br />
+                    tv:Abendprogramm rdf:type owl:Class ;<br />
+                    owl:equivalentClass [<br />
+                    rdf:type owl:Restriction ;<br />
+                    owl:onProperty tv:hatSendezeit ;<br />
+                    owl:someValuesFrom tv:PrimeTime<br />
+                    ] .
+                </code>
+            </details>
+            <details>
+                <summary>owl:NegativePropertyAssertion</summary>
+                <p>
+                    negative Rollenaussagen. Drückt aus, dass zwei Individuen nicht durch eine Rolle in Beziehung stehen.
+                </p>
+                <h2>Beispiel</h2>
+                <code>
+                    [] rdf:type owl:NegativePropertyAssertion ;<br />
+                    owl:sourceIndividual ex:Romulus ;<br />
+                    owl:assertionProperty ex:istVaterVon ;<br />
+                    owl:targetIndividual ex:Remus .
+                </code>
+            </details>
+            <details>
+                <summary>owl:propertyChainAxiom</summary>
+                <p>
+                    Liste von Rollen, die sequentiell ausgewertet werden.
+                </p>
+                <h2>Beispiel</h2>
+                <p>
+                    Das Kind eines Kindes ist ein Enkel.
+                </p>
+                <code>
+                    owl:propertyChainAxiom ( ex:hatKind ex:hatKind ) ;<br />
+                    owl:subPropertyOf ex:hatEnkel .
+                </code>
+                <p>
+                    Der Feind meines Freundes ist mein Feind.
+                </p>
+                <code>
+                    owl:propertyChainAxiom ( ex:hatFreund ex:hatFeind ) ;<br />
+                    owl:subPropertyOf ex:hatFeind .
+                </code>
+            </details>
         </details>
     </details>
 </details>
