@@ -1057,7 +1057,44 @@
 <details>
     <summary>Sematic Web Rule Language (SWRL)</summary>
     <p>SWRL ist eine Regelsprache welche von vielen Reasoner unterstützt wird. Mit ihr lassen sich mittels Regeln
-        Beziehungen modellieren, welche mit OWL nicht modellierbar sind. </p>
+        Beziehungen modellieren, welche mit OWL nicht modellierbar sind.</p>
+    <p>Die Grundsyntax hat die Form <em>Vorausgegangenes ⇒ Konsequenz</em>. Variablen beginnen mit einem <em>?</em>.
+        Es können ausschliesslich Konjunktionen (UND, <em>^</em>) verwendet werden.</p>
+    <h2>Beispiel</h2>
+    <code>
+        elternteil(?x,?y) ∧ bruder(?y,?z) ⇒ onkel(?x,?z)
+    </code>
+    <details>
+        <summary>Vom RDF Tripel zum SWRL Baustein</summary>
+        <h2>Einstelliges Prädikat (OWL Klassen)</h2>
+        <code>
+            ex:Rainer_Kuhlen a ex:Scientist .
+        </code>
+        <code>
+            Scientist(Rainer_Kuhlen)
+        </code>
+        <h2>Zweistelliges Prädikat (OWL Object- / Datatypeproperties)</h2>
+        <code>
+            ex:Rainer_Kuhlen ex:lehrt ex:Informationswissenschaft ;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ex:geburtstag '1944-01-07'^^xsd:date .
+        </code>
+        <code>
+            lehrt(Rainer_Kuhlen, Informationswissenschaft)<br />
+            geburtstag(Rainer_Kuhlen, 1944-01-07)
+        </code>
+    </details>
+    <details>
+        <summary>Negation</summary>
+        <p>SWRL hat keine Möglichkeit der Negation. Mithilfe von <em>owl:complementOf</em> kann dies trotzdem bewerkstelligt werden.</p>
+        <h2>Beispiel</h2>
+        <p>«Lebewesen, die im Wasser leben, sind keine Menschen»</p>
+        <code>
+            ex:keinMensch owl:complementOf ex:Mensch .
+        </code>
+        <code>
+            Lebewesen(?x) ^ lebtIn(?x,Wasser) ⇒ keinMensch(?x)
+        </code>
+    </details>
 </details>
 
 <details>
