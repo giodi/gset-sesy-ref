@@ -40,6 +40,13 @@
             line-height: 1.5;
         }
 
+
+
+        p a,
+        li a{
+            color: #000;
+        }
+
         p.quellen {
             font-size: 1.4rem;
             width: 100%;
@@ -184,6 +191,10 @@
 
         summary + details {
             margin-top: 1rem;
+        }
+
+        p + details{
+            margin-top: 16px;
         }
 
         code {
@@ -1054,48 +1065,6 @@
 
 </details>
 
-<details>
-    <summary>Sematic Web Rule Language (SWRL)</summary>
-    <p>SWRL ist eine Regelsprache welche von vielen Reasoner unterstützt wird. Mit ihr lassen sich mittels Regeln
-        Beziehungen modellieren, welche mit OWL nicht modellierbar sind.</p>
-    <p>Die Grundsyntax hat die Form <em>Vorausgegangenes ⇒ Konsequenz</em>. Variablen beginnen mit einem <em>?</em>.
-        Es können ausschliesslich Konjunktionen (UND, <em>^</em>) verwendet werden.</p>
-    <h2>Beispiel</h2>
-    <code>
-        elternteil(?x,?y) ∧ bruder(?y,?z) ⇒ onkel(?x,?z)
-    </code>
-    <details>
-        <summary>Vom RDF Tripel zum SWRL Baustein</summary>
-        <h2>Einstelliges Prädikat (OWL Klassen)</h2>
-        <code>
-            ex:Rainer_Kuhlen a ex:Scientist .
-        </code>
-        <code>
-            Scientist(Rainer_Kuhlen)
-        </code>
-        <h2>Zweistelliges Prädikat (OWL Object- / Datatypeproperties)</h2>
-        <code>
-            ex:Rainer_Kuhlen ex:lehrt ex:Informationswissenschaft ;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ex:geburtstag '1944-01-07'^^xsd:date .
-        </code>
-        <code>
-            lehrt(Rainer_Kuhlen, Informationswissenschaft)<br />
-            geburtstag(Rainer_Kuhlen, 1944-01-07)
-        </code>
-    </details>
-    <details>
-        <summary>Negation</summary>
-        <p>SWRL hat keine Möglichkeit der Negation. Mithilfe von <em>owl:complementOf</em> kann dies trotzdem bewerkstelligt werden.</p>
-        <h2>Beispiel</h2>
-        <p>«Lebewesen, die im Wasser leben, sind keine Menschen»</p>
-        <code>
-            ex:keinMensch owl:complementOf ex:Mensch .
-        </code>
-        <code>
-            Lebewesen(?x) ^ lebtIn(?x,Wasser) ⇒ keinMensch(?x)
-        </code>
-    </details>
-</details>
 
 <details>
     <summary>OWL (Web Onotolgy Language)</summary>
@@ -1555,7 +1524,114 @@
             </details>
         </details>
     </details>
+    <details>
+        <summary>Links</summary>
+        <ul>
+            <li>
+                <a href="http://protegeproject.github.io/protege/class-expression-syntax/" rel="noopener" target="_blank">Class Expression Syntax</a>
+            </li>
+        </ul>
+    </details>
 </details>
+
+<details>
+    <summary>Sematic Web Rule Language (SWRL)</summary>
+    <p>SWRL ist eine Regelsprache welche von vielen Reasoner unterstützt wird. Mit ihr lassen sich mittels Regeln
+        Beziehungen modellieren, welche mit OWL nicht modellierbar sind.</p>
+    <p>Die Grundsyntax hat die Form <em>Vorausgegangenes ⇒ Konsequenz</em>. Variablen beginnen mit einem <em>?</em>.
+        Es können ausschliesslich Konjunktionen (UND, <em>^</em>) verwendet werden.</p>
+    <h2>Beispiel</h2>
+    <code>
+        elternteil(?x,?y) ∧ bruder(?y,?z) ⇒ onkel(?x,?z)
+    </code>
+    <details>
+        <summary>Vom RDF Tripel zum SWRL Baustein</summary>
+        <h2>Einstelliges Prädikat (OWL Klassen)</h2>
+        <code>
+            ex:Rainer_Kuhlen a ex:Scientist .
+        </code>
+        <code>
+            Scientist(Rainer_Kuhlen)
+        </code>
+        <h2>Zweistelliges Prädikat (OWL Object- / Datatypeproperties)</h2>
+        <code>
+            ex:Rainer_Kuhlen ex:lehrt ex:Informationswissenschaft ;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ex:geburtstag '1944-01-07'^^xsd:date .
+        </code>
+        <code>
+            lehrt(Rainer_Kuhlen, Informationswissenschaft)<br />
+            geburtstag(Rainer_Kuhlen, 1944-01-07)
+        </code>
+    </details>
+    <details>
+        <summary>Negation</summary>
+        <p>SWRL hat keine Möglichkeit der Negation. Mithilfe von <em>owl:complementOf</em> kann dies trotzdem bewerkstelligt werden.</p>
+        <h2>Beispiel</h2>
+        <p>«Lebewesen, die im Wasser leben, sind keine Menschen»</p>
+        <code>
+            ex:keinMensch owl:complementOf ex:Mensch .
+        </code>
+        <code>
+            Lebewesen(?x) ^ lebtIn(?x,Wasser) ⇒ keinMensch(?x)
+        </code>
+    </details>
+    <details>
+        <summary>Links</summary>
+        <ul>
+            <li>
+                <a href="http://www.daml.org/swrl/proposal/builtins.html" rel="noopener" target="_blank">SWRL Built-Ins</a>
+            </li>
+        </ul>
+    </details>
+</details>
+
+<details>
+    <summary>Semantic Query-Enhanced Web Rule Language (SQWRL)</summary>
+    <p>
+        Abfragesprache für semantische Schlussfolgerungen (inkl. Regeln)
+    </p>
+    <details>
+        <summary>sqwrl:select</summary>
+        <p>
+            Erlaubt die Selektion von Ergebnissen.
+        </p>
+        <code>
+            hatBeruf(?x,?y) → sqwrl:select(?x)
+        </code>
+    </details>
+    <details>
+        <summary>sqwrl:orderBy</summary>
+        <p>
+            Sortiert Ergebnisse aufsteigend.
+        </p>
+        <code>
+            hatAlter(?x,?age) ^ swrlb:greaterThan(?age,25) → sqwrl:select(?x,?age) ^ sqwrl:orderBy(?age)
+        </code>
+    </details>
+    <details>
+        <summary>sqwrl:count</summary>
+        <p>
+            Zählt Ergebnisse.
+        </p>
+        <code>
+            Mensch(?x) → sqwrl:count(?x)
+        </code>
+    </details>
+    <details>
+        <summary>Aggregation</summary>
+        <ul>
+            <li>sqwrl:min</li>
+            <li>sqwrl:max</li>
+            <li>sqwrl:sum</li>
+            <li>sqwrl:avg</li>
+        </ul>
+        <code>
+            Person(?x) ^ hatAlter(?x,?age) → sqwrl:avg(?age)
+        </code>
+    </details>
+
+</details>
+
 <p class="quellen">Quellen: <a href="https://www.w3.org/TR/rdf-schema/" rel="noopener" target="_blank">https://www.w3.org/TR/rdf-schema/</a>,
     <a href="https://www.w3.org/TR/2013/REC-sparql11-overview-20130321/" rel="noopener" target="_blank">https://www.w3.org/TR/2013/REC-sparql11-overview-20130321/
 </p>
