@@ -454,6 +454,316 @@
 
         </details>
     </details>
+    <details>
+        <summary>Reifikation (rdf:Statement)</summary>
+        <p>Dient dazu Aussagen über Aussagen zu machen.</p>
+        <h2>Beispiel 1</h2>
+        <p>Rainer Kuhlen definiert, dass Information durch einen Neuigkeitswert gekennzeichnet ist.</p>
+        <code>
+            @prefix : &lt;http://example.com/&gt; .<br />
+            @prefix rdf: &lt;https://www.w3.org/TR/1999/REC-rdf-syntax-19990222/&gt;<br />
+            <br />
+            :RainerKuhlen :definiert [<br />
+            &nbsp;&nbsp;&nbsp;a rdf:Statement ;<br />
+            &nbsp;&nbsp;&nbsp;rdf:subject :Information ;<br />
+            &nbsp;&nbsp;&nbsp;rdf:predicate :hatEigenschaft ;<br />
+            &nbsp;&nbsp;&nbsp;rdf:object :Neuigkeitswert <br />
+            ] .
+        </code>
+        <svg width="100%" height="100%" style="max-width: 100%;" viewBox="0 0 850 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;">
+    <g transform="matrix(1,0,0,1,-0.753013,0)">
+        <g transform="matrix(1,0,0,1,3.99494,296.004)">
+            <rect x="-3.242" y="-296.004" width="849.496" height="299.999" style="fill:white;fill-rule:nonzero;"/>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99494,296.004)">
+            <g transform="matrix(1,0,0,1,421.506,-37.7522)">
+                <text x="-36.881px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.982px;">Namespaces:</text>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99494,296.004)">
+            <g transform="matrix(1,0,0,1,421.506,-22.7712)">
+                <text x="-56.11px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.982px;">http://example.com/</text>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99494,296.004)">
+            <g transform="matrix(1,0,0,1,421.506,-7.79013)">
+                <text x="-172.826px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.982px;">rdf: https://www<tspan x="-80.91px -77.415px " y="0px 0px ">.w</tspan>3.or<tspan x="-45.436px -38.444px " y="0px 0px ">g/</tspan>TR/1999/REC-rdf-syntax-19990222/</text>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99494,296.004)">
+            <g id="node1">
+                <circle cx="263.607" cy="-182.148" r="17.977" style="fill:none;stroke:rgb(0,128,0);stroke-width:1px;"/>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99494,296.004)">
+            <g id="node2">
+                <ellipse cx="759.171" cy="-263.046" rx="75.192" ry="17.977" style="fill:none;stroke:rgb(0,0,255);stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,759.171,-259.35)">
+                    <text x="-38.052px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.982px;">rdf:Statement</text>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99494,296.004)">
+            <g id="edge1">
+                <path d="M273.632,-197.305C279.764,-206.134 288.718,-216.583 299.562,-222.098C422.617,-284.684 588.367,-281.461 683.198,-272.739" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <path d="M683.671,-276.205L693.276,-271.767L682.999,-269.246L683.671,-276.205Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,478.834,-280.823)">
+                    <text x="-141.557px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.982px;">http://www<tspan x="-78.766px -75.271px " y="0px 0px ">.w</tspan>3.or<tspan x="-43.292px -36.301px " y="0px 0px ">g/</tspan>1999/02/22-rdf-syntax-ns#type</text>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99494,296.004)">
+            <g id="node3">
+                <ellipse cx="759.171" cy="-209.114" rx="65.705" ry="17.977" style="fill:none;stroke:rgb(0,0,255);stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,759.171,-205.419)">
+                    <text x="-33.392px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.982px;">Information</text>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99494,296.004)">
+            <g id="edge2">
+                <path d="M281.595,-183.077C344.596,-186.519 567.263,-198.684 684.591,-205.094" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <path d="M684.411,-208.585L694.574,-205.64L684.793,-201.605L684.411,-208.585Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,478.834,-206.917)">
+                    <text x="-29.897px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.982px;">rdf:subject</text>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99494,296.004)">
+            <g id="node4">
+                <ellipse cx="759.171" cy="-155.182" rx="81.383" ry="17.977" style="fill:none;stroke:rgb(0,0,255);stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,759.171,-151.487)">
+                    <text x="-41.541px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.982px;">hatEigenschaft</text>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99494,296.004)">
+            <g id="edge3">
+                <path d="M279.385,-173.222C285.421,-170.049 292.609,-166.849 299.562,-165.17C428.088,-134.131 582.799,-139.151 675.673,-146.514" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <path d="M675.612,-150.016L685.852,-147.35L676.184,-143.049L675.612,-150.016Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,478.834,-168.965)">
+                    <text x="-35.71px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.982px;">rdf:predicate</text>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99494,296.004)">
+            <g id="node5">
+                <ellipse cx="759.171" cy="-101.251" rx="83.28" ry="17.977" style="fill:none;stroke:rgb(0,0,255);stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,759.171,-97.5556)">
+                    <text x="-42.712px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.982px;">Neuigkeitswert</text>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99494,296.004)">
+            <g id="edge4">
+                <path d="M269.571,-164.927C274.636,-150.797 284.002,-131.64 299.562,-122.224C422.098,-48.069 598.584,-67.687 692.898,-85.968" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <path d="M692.396,-89.433L702.874,-87.957L693.762,-82.576L692.396,-89.433Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,478.834,-126.019)">
+                    <text x="-27.176px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.982px;">rdf:object</text>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99494,296.004)">
+            <g id="node6">
+                <ellipse cx="74.753" cy="-182.148" rx="74.093" ry="17.977" style="fill:none;stroke:rgb(0,0,255);stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,74.7527,-178.453)">
+                    <text x="-39.216px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.982px;">RainerKuhlen</text>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99494,296.004)">
+            <g id="edge5">
+                <path d="M148.797,-182.148L235.022,-182.148" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <path d="M235.275,-185.644L245.262,-182.148L235.275,-178.653L235.275,-185.644Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,197.191,-185.943)">
+                    <text x="-23.298px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.982px;">deﬁniert</text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
+        <h2>Beispiel 2</h2>
+
+        <p>Ferdinand glaubt, dass Charles weiss, dass er seine Theorie kennt.</p>
+        <code>
+            @prefix : &lt;http://example.com/&gt; .<br />
+            @prefix rdf: &lt;https://www.w3.org/TR/1999/REC-rdf-syntax-19990222/&gt; .<br />
+            <br />
+            :Ferdinand :glaubt [<br />
+            &nbsp;&nbsp;&nbsp;a rdf:Statement ;<br />
+            &nbsp;&nbsp;&nbsp;rdf:subject :Charles ;<br />
+            &nbsp;&nbsp;&nbsp;rdf:predicate :weiss ;<br />
+            &nbsp;&nbsp;&nbsp;rdf:object [<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a rdf:Statement ;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rdf:subject :Ferdinand ;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rdf:predicate :kennt ;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rdf:object :TheorieVonCharles<br />
+            &nbsp;&nbsp;&nbsp;]<br />
+            ] .
+        </code>
+        <svg width="100%" height="100%" style="max-width: 100%;" viewBox="0 0 1348 304" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;">
+    <g transform="matrix(1,0,0,1,-0.435388,0)">
+        <g transform="matrix(1,0,0,1,3.99632,300.002)">
+            <rect x="-3.561" y="-300.002" width="1347.13" height="303.998" style="fill:white;fill-rule:nonzero;"/>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99632,300.002)">
+            <g transform="matrix(1,0,0,1,670.004,-37.7652)">
+                <text x="-36.894px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.987px;">Namespaces:</text>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99632,300.002)">
+            <g transform="matrix(1,0,0,1,670.004,-22.779)">
+                <text x="-56.129px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.987px;">http://example.com/</text>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99632,300.002)">
+            <g transform="matrix(1,0,0,1,670.004,-7.79282)">
+                <text x="-172.886px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.987px;">rdf: https://www<tspan x="-80.938px -77.441px " y="0px 0px ">.w</tspan>3.or<tspan x="-45.451px -38.458px " y="0px 0px ">g/</tspan>TR/1999/REC-rdf-syntax-19990222/</text>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99632,300.002)">
+            <g id="node1">
+                <circle cx="18.419" cy="-176.116" r="17.983" style="fill:none;stroke:rgb(0,128,0);stroke-width:1px;"/>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99632,300.002)">
+            <g id="node2">
+                <ellipse cx="1264.25" cy="-269.03" rx="75.218" ry="17.983" style="fill:none;stroke:rgb(0,0,255);stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,1264.25,-265.334)">
+                    <text x="-38.065px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.987px;">rdf:Statement</text>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99632,300.002)">
+            <g id="edge1">
+                <path d="M24.841,-193.081C30.148,-206.857 39.615,-225.648 54.386,-236.061C95.742,-265.214 115.927,-252.084 166.283,-257.041C543.212,-294.152 996.49,-280.841 1180.04,-273.051" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <path d="M1180.33,-276.538L1190.16,-272.615L1180.03,-269.552L1180.33,-276.538Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,561.001,-284.816)">
+                    <text x="-141.606px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.987px;">http://www<tspan x="-78.794px -75.297px " y="0px 0px ">.w</tspan>3.or<tspan x="-43.307px -36.313px " y="0px 0px ">g/</tspan>1999/02/22-rdf-syntax-ns#type</text>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99632,300.002)">
+            <g id="node3">
+                <ellipse cx="264.983" cy="-230.066" rx="57.637" ry="17.983" style="fill:none;stroke:rgb(0,0,255);stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,264.983,-226.37)">
+                    <text x="-28.357px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.987px;">Ferdinand</text>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99632,300.002)">
+            <g id="edge2">
+                <path d="M33.893,-185.38C40.005,-188.914 47.331,-192.672 54.386,-195.098C101.116,-211.174 156.331,-220 198.355,-224.763" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <path d="M198.16,-228.259L208.47,-225.859L198.914,-221.306L198.16,-228.259Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,101.342,-220.875)">
+                    <text x="-29.907px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.987px;">rdf:subject</text>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99632,300.002)">
+            <g id="node4">
+                <ellipse cx="264.983" cy="-176.116" rx="37.859" ry="17.983" style="fill:none;stroke:rgb(0,0,255);stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,264.983,-172.419)">
+                    <text x="-15.537px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.987px;">kennt</text>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99632,300.002)">
+            <g id="edge3">
+                <path d="M36.615,-176.116L216.801,-176.116" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <path d="M217.017,-179.613L227.008,-176.116L217.017,-172.619L217.017,-179.613Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,101.342,-179.912)">
+                    <text x="-35.722px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.987px;">rdf:predicate</text>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99632,300.002)">
+            <g id="node5">
+                <ellipse cx="264.983" cy="-122.165" rx="98.492" ry="17.983" style="fill:none;stroke:rgb(0,0,255);stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,264.983,-118.469)">
+                    <text x="-54.251px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.987px;">TheorieV<tspan x="-2.462px 4.531px " y="0px 0px ">on</tspan>Charles</text>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99632,300.002)">
+            <g id="edge4">
+                <path d="M33.893,-166.851C40.005,-163.318 47.331,-159.56 54.386,-157.133C90.02,-144.876 130.587,-136.832 166.477,-131.592" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <path d="M167.062,-135.041L176.468,-130.187L166.088,-128.116L167.062,-135.041Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,101.342,-160.93)">
+                    <text x="-27.185px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.987px;">rdf:object</text>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99632,300.002)">
+            <g id="node6">
+                <circle cx="776.303" cy="-208.086" r="17.983" style="fill:none;stroke:rgb(0,128,0);stroke-width:1px;"/>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99632,300.002)">
+            <g id="edge9">
+                <path d="M322.435,-227.63C431.522,-222.923 667.602,-212.734 747.914,-209.268" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <path d="M748.353,-212.75L758.182,-208.826L748.051,-205.762L748.353,-212.75Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,561.001,-227.868)">
+                    <text x="-17.48px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.987px;">glaubt</text>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99632,300.002)">
+            <g id="edge8">
+                <path d="M759.768,-199.994C690.449,-164.9 402.447,-29.882 166.283,-80.204C113.016,-91.554 97.07,-96.332 54.386,-130.158C46.621,-136.311 39.641,-144.561 33.997,-152.373" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <path d="M30.945,-150.642L28.221,-160.871L36.729,-154.574L30.945,-150.642Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,264.983,-84.0008)">
+                    <text x="-27.185px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.987px;">rdf:object</text>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99632,300.002)">
+            <g id="edge5">
+                <path d="M792.526,-216.511C798.504,-219.423 805.538,-222.379 812.27,-224.072C967.182,-263.031 1012.97,-223.358 1170.94,-247.05C1181.67,-248.66 1192.99,-250.895 1203.88,-253.328" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <path d="M1203.21,-256.763L1213.73,-255.606L1204.79,-249.949L1203.21,-256.763Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,991.604,-250.847)">
+                    <text x="-141.606px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.987px;">http://www<tspan x="-78.794px -75.297px " y="0px 0px ">.w</tspan>3.or<tspan x="-43.307px -36.313px " y="0px 0px ">g/</tspan>1999/02/22-rdf-syntax-ns#type</text>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99632,300.002)">
+            <g id="node7">
+                <ellipse cx="1264.25" cy="-208.086" rx="46.55" ry="17.983" style="fill:none;stroke:rgb(0,0,255);stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,1264.25,-204.39)">
+                    <text x="-21.363px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.987px;">Charles</text>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99632,300.002)">
+            <g id="edge6">
+                <path d="M794.312,-208.086L1207.15,-208.086" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <path d="M1207.36,-211.583L1217.36,-208.086L1207.36,-204.59L1207.36,-211.583Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,991.604,-211.883)">
+                    <text x="-29.907px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.987px;">rdf:subject</text>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99632,300.002)">
+            <g id="node8">
+                <ellipse cx="1264.25" cy="-154.136" rx="36.26" ry="17.983" style="fill:none;stroke:rgb(0,0,255);stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,1264.25,-150.439)">
+                    <text x="-15.541px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.987px;">weiss</text>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,3.99632,300.002)">
+            <g id="edge7">
+                <path d="M791.677,-198.509C797.774,-194.927 805.116,-191.219 812.27,-189.104C955.808,-146.682 1135.6,-148.046 1218.09,-151.51" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <path d="M1217.99,-155.006L1228.13,-151.963L1218.3,-148.02L1217.99,-155.006Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,991.604,-192.9)">
+                    <text x="-35.722px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.987px;">rdf:predicate</text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
+
+    </details>
 </details>
 <details>
     <summary>Terse RDF Triple Language (Turtle)</summary>
