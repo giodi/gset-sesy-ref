@@ -66,7 +66,7 @@
             background: #bbb;
             line-height: 1;
             font-size: 1.6rem;
-            padding: 2.4rem;
+            padding: 5rem 2.4rem;
             font-family: Verdana, sans-serif;
         }
 
@@ -281,6 +281,11 @@
     </style>
 </head>
 <body>
+<header>
+    <label for="sectionSearch">Suchen:</label>
+    <input list="sections" id="sectionSearch" name="search" />
+    <datalist id="sections"></datalist>
+</header>
 <details>
     <summary>RDF Schema</summary>
     <details>
@@ -1947,6 +1952,39 @@
 </p>
 <script type="text/javascript">
     (() => {
+
+        function openDetail(elem){
+            elem.setAttribute('open', 'true');
+            let pN = elem.parentNode;
+            while (pN.nodeName == 'DETAILS') {
+                pN.setAttribute('open', 'true');
+                pN = pN.parentNode;
+            }
+            elem.scrollIntoView({behavior: 'smooth'})
+        }
+
+        const dataList = document.querySelector('datalist');
+        const dataListItems = document.querySelectorAll('summary');
+        let dLA = [];
+
+        let dI = dataListItems.length;
+        while(dI--){
+            let opt = document.createElement('option');
+            opt.value = dataListItems[dI].innerText;
+            opt.id = dI;
+            dataList.appendChild(opt);
+            dLA.push({id: dI, value: dataListItems[dI].innerText});
+
+        }
+
+
+        document.querySelector('#sectionSearch').addEventListener('change',(e)=>{
+            const result = dLA.find( res => res.value === e.target.value );
+            openDetail(dataListItems[result.id]);
+
+
+        })
+
         const skipLinks = document.querySelectorAll('a');
         let i = skipLinks.length;
         while (i--) {
@@ -1956,16 +1994,13 @@
 
                 if (hl) {
                     let elem = document.querySelector(hl);
-                    elem.setAttribute('open', 'true');
-                    let pN = elem.parentNode;
-                    while (pN.nodeName == 'DETAILS') {
-                        pN.setAttribute('open', 'true');
-                        pN = pN.parentNode;
-                    }
+                    openDetail(elem);
                 }
 
             })
         }
+
+
     })();
 </script>
 </body>
