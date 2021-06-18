@@ -950,8 +950,8 @@
         </details>
     </details>
     <details id="collections">
-        <summary>Collections</summary>
-        <p>Eine Collections wird mittels «<em>()</em>» initialisiert.</p>
+        <summary>Collections ( (:a :b :c) )</summary>
+        <p>Eine Collections wird mittels «<em>()</em>» initialisiert. Eine Collection ist eine «abgeschlossene» Liste von Elementen. Das heisst nach der Definition können ihr keine zusätzlichen Elemente angefügt werden.</p>
         <code>
             @prefix : &lt;http://example.org/foo&gt; .<br/>
             # Das Objekt dieses Tripels ist das RDF collection blank node.<br/>
@@ -960,6 +960,292 @@
             # Eine leere Collection (rdf:nil)<br/>
             :subject :predicate2 () .
         </code>
+        <h2>Beispiel</h2>
+        <code>
+            :ListOfPhilosophers a ("Ferdinand de Saussure" "Ludwig Wittgenstein" "Charles W. Morris") .
+        </code>
+        <svg width="100%" height="100%" style="max-width: 100%" viewBox="0 0 2635 218" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;">
+    <g id="graph0" transform="matrix(1,0,0,1,3.99933,213.964)">
+        <rect x="-3.999" y="-213.946" width="2635" height="217.964" style="fill:white;fill-rule:nonzero;"/>
+        <g transform="matrix(1,0,0,1,1313.5,-22.778)">
+            <text x="-36.922px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.998px;">Namespaces:</text>
+        </g>
+        <g transform="matrix(1,0,0,1,1313.5,-7.7805)">
+            <text x="-38.295px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.998px;">http://fhgr<tspan x="17.695px 21.195px " y="0px 0px ">.c</tspan>h/</text>
+        </g>
+        <g id="node1">
+            <circle cx="1680.1" cy="-163.455" r="17.997" style="fill:none;stroke:rgb(0,128,0);stroke-width:1px;"/>
+        </g>
+        <g id="node2">
+            <rect x="2318.27" y="-209.447" width="146.975" height="35.994" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+            <g transform="matrix(1,0,0,1,2391.76,-187.75)">
+                <text x="-51.517px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.998px;">Charles <tspan x="-5.512px 6.414px 9.914px " y="0px 0px 0px ">W. </tspan>Morris</text>
+            </g>
+        </g>
+        <g id="edge1">
+            <path d="M1698.17,-164.595C1718.15,-165.904 1752.26,-168.049 1781.58,-169.454C1969.62,-178.46 2190.46,-185.571 2307.74,-189.071" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+            <path d="M2307.97,-192.579L2318.06,-189.378L2308.18,-185.583L2307.97,-192.579Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+            <g transform="matrix(1,0,0,1,1960.05,-187.251)">
+                <text x="-140.554px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.998px;">http://www<tspan x="-77.695px -74.195px " y="0px 0px ">.w</tspan>3.or<tspan x="-42.181px -35.182px " y="0px 0px ">g/</tspan>1999/02/22-rdf-syntax-ns#ﬁrst</text>
+            </g>
+        </g>
+        <g id="node3">
+            <ellipse cx="2391.76" cy="-136.459" rx="235.019" ry="17.997" style="fill:none;stroke:rgb(0,0,255);stroke-width:1px;"/>
+            <g transform="matrix(1,0,0,1,2391.76,-132.76)">
+                <text x="-137.051px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.998px;">http://www<tspan x="-74.192px -70.692px " y="0px 0px ">.w</tspan>3.or<tspan x="-38.678px -31.679px " y="0px 0px ">g/</tspan>1999/02/22-rdf-syntax-ns#nil</text>
+            </g>
+        </g>
+        <g id="edge2">
+            <path d="M1698.15,-161.615C1718.11,-159.533 1752.21,-156.204 1781.58,-154.456C1903.2,-147.22 2038.67,-142.853 2150.91,-140.237" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+            <path d="M2151.09,-143.733L2161.01,-140.004L2150.93,-136.736L2151.09,-143.733Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+            <g transform="matrix(1,0,0,1,1960.05,-158.255)">
+                <text x="-139.768px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.998px;">http://www<tspan x="-76.909px -73.409px " y="0px 0px ">.w</tspan>3.or<tspan x="-41.395px -34.396px " y="0px 0px ">g/</tspan>1999/02/22-rdf-syntax-ns#rest</text>
+            </g>
+        </g>
+        <g id="node4">
+            <circle cx="1113.19" cy="-127.461" r="17.997" style="fill:none;stroke:rgb(0,128,0);stroke-width:1px;"/>
+        </g>
+        <g id="edge4">
+            <path d="M1131.41,-128.557C1212.06,-133.696 1552.74,-155.403 1651.91,-161.722" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+            <path d="M1651.82,-165.222L1662.02,-162.366L1652.26,-158.238L1651.82,-165.222Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+            <g transform="matrix(1,0,0,1,1400.15,-161.255)">
+                <text x="-139.768px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.998px;">http://www<tspan x="-76.909px -73.409px " y="0px 0px ">.w</tspan>3.or<tspan x="-41.395px -34.396px " y="0px 0px ">g/</tspan>1999/02/22-rdf-syntax-ns#rest</text>
+            </g>
+        </g>
+        <g id="node5">
+            <rect x="1596.61" y="-126.461" width="166.972" height="35.994" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+            <g transform="matrix(1,0,0,1,1680.1,-104.764)">
+                <text x="-58.878px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.998px;">Ludwig <tspan x="-12.087px 0.564px 4.453px " y="0px 0px 0px ">Wit</tspan>tgenstein</text>
+            </g>
+        </g>
+        <g id="edge3">
+            <path d="M1131.29,-125.481C1152.48,-123.119 1189.68,-119.263 1221.68,-117.462C1347.81,-110.365 1493.76,-108.613 1586.23,-108.304" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+            <path d="M1586.4,-111.803L1596.39,-108.275L1586.39,-104.804L1586.4,-111.803Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+            <g transform="matrix(1,0,0,1,1400.15,-121.262)">
+                <text x="-140.554px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.998px;">http://www<tspan x="-77.695px -74.195px " y="0px 0px ">.w</tspan>3.or<tspan x="-42.181px -35.182px " y="0px 0px ">g/</tspan>1999/02/22-rdf-syntax-ns#ﬁrst</text>
+            </g>
+        </g>
+        <g id="node6">
+            <circle cx="611.78" cy="-91.467" r="17.997" style="fill:none;stroke:rgb(0,128,0);stroke-width:1px;"/>
+        </g>
+        <g id="edge6">
+            <path d="M629.835,-94.165C635.529,-94.996 641.915,-95.852 647.774,-96.466C813.278,-113.785 1013.03,-123.297 1084.84,-126.355" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+            <path d="M1084.73,-129.853L1094.87,-126.775L1085.02,-122.86L1084.73,-129.853Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+            <g transform="matrix(1,0,0,1,826.244,-126.261)">
+                <text x="-139.768px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.998px;">http://www<tspan x="-76.909px -73.409px " y="0px 0px ">.w</tspan>3.or<tspan x="-41.395px -34.396px " y="0px 0px ">g/</tspan>1999/02/22-rdf-syntax-ns#rest</text>
+            </g>
+        </g>
+        <g id="node7">
+            <rect x="1022.71" y="-90.467" width="180.97" height="35.994" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+            <g transform="matrix(1,0,0,1,1113.19,-68.7703)">
+                <text x="-63.365px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.998px;">Ferdinand de Saussure</text>
+            </g>
+        </g>
+        <g id="edge5">
+            <path d="M628.966,-85.897C634.819,-84.136 641.526,-82.405 647.774,-81.468C772.431,-62.777 917.998,-63.555 1012.47,-66.997" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+            <path d="M1012.46,-70.498L1022.59,-67.383L1012.73,-63.504L1012.46,-70.498Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+            <g transform="matrix(1,0,0,1,826.244,-85.2676)">
+                <text x="-140.554px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.998px;">http://www<tspan x="-77.695px -74.195px " y="0px 0px ">.w</tspan>3.or<tspan x="-42.181px -35.182px " y="0px 0px ">g/</tspan>1999/02/22-rdf-syntax-ns#ﬁrst</text>
+            </g>
+        </g>
+        <g id="node8">
+            <ellipse cx="99.425" cy="-91.467" rx="99.366" ry="17.997" style="fill:none;stroke:rgb(0,0,255);stroke-width:1px;"/>
+            <g transform="matrix(1,0,0,1,99.4246,-87.7671)">
+                <text x="-54.436px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.998px;">ListOfPhilosophers</text>
+            </g>
+        </g>
+        <g id="edge7">
+            <path d="M199.129,-91.467L582.953,-91.467" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+            <path d="M583.367,-94.966L593.365,-91.467L583.367,-87.967L583.367,-94.966Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+            <g transform="matrix(1,0,0,1,396.316,-95.2659)">
+                <text x="-141.713px" y="0px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:13.998px;">http://www<tspan x="-78.853px -75.354px " y="0px 0px ">.w</tspan>3.or<tspan x="-43.339px -36.341px " y="0px 0px ">g/</tspan>1999/02/22-rdf-syntax-ns#type</text>
+            </g>
+        </g>
+    </g>
+</svg>
+
+    </details>
+    <details>
+        <summary>RDF Container</summary>
+        <p>RDF Container repräsentieren Sammlungen von Elementen. Elemente können in einem Container mehrmals vorkommen. Ein Container kann sich selbst enthalten.</p>
+        <details>
+            <summary>Geordneter Conatiner (rdf:Seq)</summary>
+            <p>Mittels dem <em>rdf:Seq</em> werden die lesenden Menschen darauf hingewiesen, dass die Reihenfolge im Container eine Rolle spielt.</p>
+            <code>
+                :rangliste :hatReihenfolge [<br />
+                &nbsp;&nbsp;&nbsp;a rdf:Seq;<br />
+                &nbsp;&nbsp;&nbsp;rdf:_1 :Rainer ;<br />
+                &nbsp;&nbsp;&nbsp;rdf:_2 :Ferdinand ;<br />
+                &nbsp;&nbsp;&nbsp;rdf:_3 :Ludwig <br />
+                ] .<br />
+            </code>
+            <svg width="503pt" height="275pt"
+                 viewBox="0.00 0.00 502.68 275.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 271)">
+                    <title>%3</title>
+                    <polygon fill="white" stroke="none" points="-4,4 -4,-271 498.681,-271 498.681,4 -4,4"/>
+                    <text text-anchor="middle" x="247.34" y="-37.8" font-family="Times,serif" font-size="14.00">Namespaces:</text>
+                    <text text-anchor="middle" x="247.34" y="-22.8" font-family="Times,serif" font-size="14.00">http://example.com/</text>
+                    <text text-anchor="middle" x="247.34" y="-7.8" font-family="Times,serif" font-size="14.00">rdf: http://www.w3.org/1999/02/22&#45;rdf&#45;syntax&#45;ns#</text>
+                    <!-- B_:genid1 -->
+                    <g id="node1" class="node"><title>B_:genid1</title>
+                        <ellipse fill="none" stroke="green" cx="266.991" cy="-168" rx="18" ry="18"/>
+                    </g>
+                    <!-- Rrdf:Seq -->
+                    <g id="node2" class="node"><title>Rrdf:Seq</title>
+                        <ellipse fill="none" stroke="blue" cx="436.836" cy="-249" rx="44.393" ry="18"/>
+                        <text text-anchor="middle" x="436.836" y="-245.3" font-family="Times,serif" font-size="14.00">rdf:Seq</text>
+                    </g>
+                    <!-- B_:genid1&#45;&gt;Rrdf:Seq -->
+                    <g id="edge1" class="edge"><title>B_:genid1&#45;&gt;Rrdf:Seq</title>
+                        <path fill="none" stroke="black" d="M279.587,-181.272C285.956,-187.918 294.312,-195.663 302.991,-201 329.478,-217.289 362.318,-229.218 388.719,-237.109"/>
+                        <polygon fill="black" stroke="black" points="387.917,-240.521 398.496,-239.937 389.862,-233.796 387.917,-240.521"/>
+                        <text text-anchor="middle" x="331.991" y="-230.8" font-family="Times,serif" font-size="14.00">rdf:type</text>
+                    </g>
+                    <!-- RRainer -->
+                    <g id="node3" class="node"><title>RRainer</title>
+                        <ellipse fill="none" stroke="blue" cx="436.836" cy="-195" rx="41.6928" ry="18"/>
+                        <text text-anchor="middle" x="436.836" y="-191.3" font-family="Times,serif" font-size="14.00">Rainer</text>
+                    </g>
+                    <!-- B_:genid1&#45;&gt;RRainer -->
+                    <g id="edge2" class="edge"><title>B_:genid1&#45;&gt;RRainer</title>
+                        <path fill="none" stroke="black" d="M285.008,-170.737C308.902,-174.581 353.33,-181.728 387.802,-187.273"/>
+                        <polygon fill="black" stroke="black" points="387.262,-190.731 397.691,-188.864 388.374,-183.82 387.262,-190.731"/>
+                        <text text-anchor="middle" x="331.991" y="-185.8" font-family="Times,serif" font-size="14.00">rdf:_1</text>
+                    </g>
+                    <!-- RFerdinand -->
+                    <g id="node4" class="node"><title>RFerdinand</title>
+                        <ellipse fill="none" stroke="blue" cx="436.836" cy="-141" rx="57.6901" ry="18"/>
+                        <text text-anchor="middle" x="436.836" y="-137.3" font-family="Times,serif" font-size="14.00">Ferdinand</text>
+                    </g>
+                    <!-- B_:genid1&#45;&gt;RFerdinand -->
+                    <g id="edge3" class="edge"><title>B_:genid1&#45;&gt;RFerdinand</title>
+                        <path fill="none" stroke="black" d="M283.709,-160.612C289.631,-158.124 296.505,-155.58 302.991,-154 324.274,-148.814 347.952,-145.685 369.355,-143.801"/>
+                        <polygon fill="black" stroke="black" points="369.648,-147.289 379.335,-142.997 369.086,-140.312 369.648,-147.289"/>
+                        <text text-anchor="middle" x="331.991" y="-157.8" font-family="Times,serif" font-size="14.00">rdf:_2</text>
+                    </g>
+                    <!-- RLudwig -->
+                    <g id="node5" class="node"><title>RLudwig</title>
+                        <ellipse fill="none" stroke="blue" cx="436.836" cy="-87" rx="45.4919" ry="18"/>
+                        <text text-anchor="middle" x="436.836" y="-83.3" font-family="Times,serif" font-size="14.00">Ludwig</text>
+                    </g>
+                    <!-- B_:genid1&#45;&gt;RLudwig -->
+                    <g id="edge4" class="edge"><title>B_:genid1&#45;&gt;RLudwig</title>
+                        <path fill="none" stroke="black" d="M277.298,-152.823C283.538,-143.826 292.516,-132.875 302.991,-126 327.118,-110.165 357.834,-100.605 383.652,-94.9168"/>
+                        <polygon fill="black" stroke="black" points="384.563,-98.3025 393.647,-92.8506 383.146,-91.4474 384.563,-98.3025"/>
+                        <text text-anchor="middle" x="331.991" y="-129.8" font-family="Times,serif" font-size="14.00">rdf:_3</text>
+                    </g>
+                    <!-- Rrangliste -->
+                    <g id="node6" class="node"><title>Rrangliste</title>
+                        <ellipse fill="none" stroke="blue" cx="51.9954" cy="-168" rx="51.9908" ry="18"/>
+                        <text text-anchor="middle" x="51.9954" y="-164.3" font-family="Times,serif" font-size="14.00">rangliste</text>
+                    </g>
+                    <!-- Rrangliste&#45;&gt;B_:genid1 -->
+                    <g id="edge5" class="edge"><title>Rrangliste&#45;&gt;B_:genid1</title>
+                        <path fill="none" stroke="black" d="M104.013,-168C146.213,-168 204.538,-168 238.463,-168"/>
+                        <polygon fill="black" stroke="black" points="238.569,-171.5 248.569,-168 238.569,-164.5 238.569,-171.5"/>
+                        <text text-anchor="middle" x="176.491" y="-171.8" font-family="Times,serif" font-size="14.00">hatReihenfolge</text>
+                    </g>
+                </g>
+            </svg>
+
+
+        </details>
+        <details>
+            <summary>Ungeordneter Conatiner (rdf:Bag)</summary>
+            <p>Mittels dem <em>rdf:Bag</em> werden die lesenden Menschen darauf hingewiesen, dass die Reihenfolge im Container keine Rolle spielt.</p>
+            <code>
+                :Kuhlen :definiertInfoAls [<br />
+                &nbsp;&nbsp;&nbsp;a rdf:Bag ;<br />
+                &nbsp;&nbsp;&nbsp;rdf:_1 :Adressatenbezogen ;<br />
+                &nbsp;&nbsp;&nbsp;rdf:_2 :Neuigkeit ;<br />
+                &nbsp;&nbsp;&nbsp;rdf:_3 :Kontextabhängig<br />
+                ] .
+            </code>
+            <svg width="577pt" height="275pt"
+                 viewBox="0.00 0.00 577.17 275.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 271)">
+                    <title>%3</title>
+                    <polygon fill="white" stroke="none" points="-4,4 -4,-271 573.174,-271 573.174,4 -4,4"/>
+                    <text text-anchor="middle" x="284.587" y="-37.8" font-family="Times,serif" font-size="14.00">Namespaces:</text>
+                    <text text-anchor="middle" x="284.587" y="-22.8" font-family="Times,serif" font-size="14.00">http://example.com/</text>
+                    <text text-anchor="middle" x="284.587" y="-7.8" font-family="Times,serif" font-size="14.00">rdf: http://www.w3.org/1999/02/22&#45;rdf&#45;syntax&#45;ns#</text>
+                    <!-- B_:genid1 -->
+                    <g id="node1" class="node"><title>B_:genid1</title>
+                        <ellipse fill="none" stroke="green" cx="253.092" cy="-168" rx="18" ry="18"/>
+                    </g>
+                    <!-- Rrdf:Bag -->
+                    <g id="node2" class="node"><title>Rrdf:Bag</title>
+                        <ellipse fill="none" stroke="blue" cx="467.133" cy="-249" rx="45.4919" ry="18"/>
+                        <text text-anchor="middle" x="467.133" y="-245.3" font-family="Times,serif" font-size="14.00">rdf:Bag</text>
+                    </g>
+                    <!-- B_:genid1&#45;&gt;Rrdf:Bag -->
+                    <g id="edge1" class="edge"><title>B_:genid1&#45;&gt;Rrdf:Bag</title>
+                        <path fill="none" stroke="black" d="M266.123,-180.454C272.483,-186.451 280.698,-193.335 289.092,-198 328.321,-219.801 377.73,-233.025 414.377,-240.524"/>
+                        <polygon fill="black" stroke="black" points="413.867,-243.991 424.355,-242.49 415.22,-237.123 413.867,-243.991"/>
+                        <text text-anchor="middle" x="318.092" y="-224.8" font-family="Times,serif" font-size="14.00">rdf:type</text>
+                    </g>
+                    <!-- RAdressatenbezogen -->
+                    <g id="node3" class="node"><title>RAdressatenbezogen</title>
+                        <ellipse fill="none" stroke="blue" cx="467.133" cy="-195" rx="102.082" ry="18"/>
+                        <text text-anchor="middle" x="467.133" y="-191.3" font-family="Times,serif" font-size="14.00">Adressatenbezogen</text>
+                    </g>
+                    <!-- B_:genid1&#45;&gt;RAdressatenbezogen -->
+                    <g id="edge2" class="edge"><title>B_:genid1&#45;&gt;RAdressatenbezogen</title>
+                        <path fill="none" stroke="black" d="M271.086,-170.164C293.549,-173.024 334.829,-178.281 373.648,-183.224"/>
+                        <polygon fill="black" stroke="black" points="373.619,-186.748 383.981,-184.539 374.503,-179.804 373.619,-186.748"/>
+                        <text text-anchor="middle" x="318.092" y="-182.8" font-family="Times,serif" font-size="14.00">rdf:_1</text>
+                    </g>
+                    <!-- RNeuigkeit -->
+                    <g id="node4" class="node"><title>RNeuigkeit</title>
+                        <ellipse fill="none" stroke="blue" cx="467.133" cy="-141" rx="57.3905" ry="18"/>
+                        <text text-anchor="middle" x="467.133" y="-137.3" font-family="Times,serif" font-size="14.00">Neuigkeit</text>
+                    </g>
+                    <!-- B_:genid1&#45;&gt;RNeuigkeit -->
+                    <g id="edge3" class="edge"><title>B_:genid1&#45;&gt;RNeuigkeit</title>
+                        <path fill="none" stroke="black" d="M269.387,-160.118C275.378,-157.387 282.408,-154.609 289.092,-153 325.057,-144.34 366.234,-141.164 399.821,-140.233"/>
+                        <polygon fill="black" stroke="black" points="400.065,-143.728 409.987,-140.012 399.913,-136.73 400.065,-143.728"/>
+                        <text text-anchor="middle" x="318.092" y="-156.8" font-family="Times,serif" font-size="14.00">rdf:_2</text>
+                    </g>
+                    <!-- RKontextabhängig -->
+                    <g id="node5" class="node"><title>RKontextabhängig</title>
+                        <ellipse fill="none" stroke="blue" cx="467.133" cy="-87" rx="89.8845" ry="18"/>
+                        <text text-anchor="middle" x="467.133" y="-83.3" font-family="Times,serif" font-size="14.00">Kontextabhängig</text>
+                    </g>
+                    <!-- B_:genid1&#45;&gt;RKontextabhängig -->
+                    <g id="edge4" class="edge"><title>B_:genid1&#45;&gt;RKontextabhängig</title>
+                        <path fill="none" stroke="black" d="M262.868,-152.6C269.019,-143.202 278.093,-131.737 289.092,-125 314.032,-109.726 344.226,-100.535 372.562,-95.0223"/>
+                        <polygon fill="black" stroke="black" points="373.279,-98.4493 382.495,-93.2221 372.031,-91.5615 373.279,-98.4493"/>
+                        <text text-anchor="middle" x="318.092" y="-128.8" font-family="Times,serif" font-size="14.00">rdf:_3</text>
+                    </g>
+                    <!-- RKuhlen -->
+                    <g id="node6" class="node"><title>RKuhlen</title>
+                        <ellipse fill="none" stroke="blue" cx="43.5461" cy="-168" rx="43.5923" ry="18"/>
+                        <text text-anchor="middle" x="43.5461" y="-164.3" font-family="Times,serif" font-size="14.00">Kuhlen</text>
+                    </g>
+                    <!-- RKuhlen&#45;&gt;B_:genid1 -->
+                    <g id="edge5" class="edge"><title>RKuhlen&#45;&gt;B_:genid1</title>
+                        <path fill="none" stroke="black" d="M87.2982,-168C128.416,-168 189.356,-168 224.457,-168"/>
+                        <polygon fill="black" stroke="black" points="224.887,-171.5 234.887,-168 224.887,-164.5 224.887,-171.5"/>
+                        <text text-anchor="middle" x="161.092" y="-171.8" font-family="Times,serif" font-size="14.00">definiertInfoAls</text>
+                    </g>
+                </g>
+            </svg>
+
+
+        </details>
+        <details>
+            <summary>Container mit Alternativen (rdf:Alt)</summary>
+            <p>Die Elemente im <em>rdf:Alt</em> Container beschreiben meisten Alternativen für typischerweise eine Ressource. Z.B. Übersetzungen. </p>
+            <code>
+                :Information :hatUebersetzungen [<br />
+                &nbsp;&nbsp;&nbsp;a rdf:Alt ;<br />
+                &nbsp;&nbsp;&nbsp;rdf:_1 "Information"@en ;<br />
+                &nbsp;&nbsp;&nbsp;rdf:_2 "Informazione"@it ;<br />
+                &nbsp;&nbsp;&nbsp;rdf:_3 "Información"@es<br />
+                ] .
+            </code>
+        </details>
     </details>
     <details>
         <summary>Tools & Weiterführendes</summary>
