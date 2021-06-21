@@ -257,6 +257,7 @@
         }
 
         em {
+            white-space: nowrap;
             font-family: monospace;
         }
 
@@ -2208,6 +2209,21 @@
         </code>
     </details>
     <details>
+        <summary>Gleichheit und Verschiedenheit</summary>
+        <p>Mit <em>sameAs</em> und <em>differentFrom</em> wird auf Gleichheit resp. Verschiedenheit überpüft.</p>
+        <h2>Gleichheit</h2>
+        <p>Wahr wenn beide Ressourcen die gleiche ISBN haben.</p>
+        <code>
+            isbn(?x,?n) ^ isbn(?y,?n) → sameAs(?x,?y)
+        </code>
+        <h2>Verschiedenheit</h2>
+        <p>Wahr wenn beide Ressourcen (<em>?x, ?y</em>) unterschiedlich sind.</p>
+        <code>
+            hatMutter(?x,?z) ^ hatMutter(?y,?z) ^ differentFrom(?x,?y) → hatGeschwister(?x,?y) ^ hatGeschwister(?y,?x)
+        </code>
+
+    </details>
+    <details>
         <summary>Negation</summary>
         <p>SWRL hat keine Möglichkeit der Negation. Mithilfe von <em>owl:complementOf</em> kann dies trotzdem bewerkstelligt werden.</p>
         <h2>Beispiel</h2>
@@ -2220,7 +2236,14 @@
         </code>
     </details>
     <details>
-        <summary>Links</summary>
+        <summary>Built-Ins</summary>
+        <p>Built-Ins dienen um komplexe Operationen möglich zu machen wie z.B. Arithmetische Operationen. Mittels Built-Ins können freie Variablen gebunden werden.</p>
+        <h2>Beispiel</h2>
+        <p>Hier wird das Alter einer Person in Jahre zum Alter der Person in Sekunden umgerechnet. <em>?sekunden</em> entspricht hier der freien Variable welche mit dem Produkt (<em>?alter * 86400</em>) belegt wird.</p>
+        <code>
+            hatAlter(?person,?alter) ^ swrlb:multiply(?sekunden,?alter,86400) →  alterInSekunden(?person,?sekunden)
+        </code>
+        <h2>Liste Built-Ins</h2>
         <ul>
             <li>
                 <a href="http://www.daml.org/swrl/proposal/builtins.html" rel="noopener" target="_blank">SWRL Built-Ins</a>
